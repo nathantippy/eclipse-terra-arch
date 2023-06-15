@@ -1,0 +1,126 @@
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>net.terraarch</groupId>
+	<artifactId>build-product</artifactId>
+
+	<packaging>eclipse-repository</packaging>
+
+	<parent>
+		<artifactId>terraform-architect</artifactId>
+		<groupId>net.terraarch</groupId>
+		<version>1.1.0-SNAPSHOT</version>
+	</parent>
+
+	
+	
+
+	<prerequisites>
+		<maven>3.0</maven>
+	</prerequisites>
+
+	<properties>
+		<tycho.version>2.4.0</tycho.version>
+	</properties>
+
+	<profiles>
+
+		<profile>
+			<id>build</id>
+
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+
+			<build>
+				<plugins>
+				
+				    <!-- plugin>
+				        <groupId>org.sonatype.tycho</groupId>
+				        <artifactId>maven-osgi-packaging-plugin</artifactId>
+				        <version>${tycho.version}</version>
+				        <configuration>
+				          <archive>
+				            <addMavenDescriptor>true</addMavenDescriptor>
+				          </archive>
+				        </configuration>
+				      </plugin -->
+				      
+					<plugin>
+						<!-- enable tycho build extension -->
+						<groupId>org.eclipse.tycho</groupId>
+						<artifactId>tycho-maven-plugin</artifactId>
+						<version>${tycho.version}</version>
+						<extensions>true</extensions>
+					</plugin>
+
+					<plugin>
+						<groupId>org.eclipse.tycho</groupId>
+						<artifactId>tycho-p2-repository-plugin</artifactId>
+						<version>${tycho.version}</version>
+						<executions>
+							<execution>
+								<!-- install the product using the p2 director -->
+								<id>build-site-p2</id>
+								<goals>
+									<goal>assemble-repository</goal>
+								</goals>
+							</execution>
+						</executions>
+						<configuration>
+							<!-- from import package maven can lookup bundle from all repositorys 
+								declare on target platform, also maven local so default generated site-p2 
+								don't include that bundle. this configuration change default behavior -->
+							<includeAllDependencies>true</includeAllDependencies>
+							<!-- https://bugs.eclipse.org/bugs/show_bug.cgi?id=512396 -->
+							<xzCompress>false</xzCompress>
+						</configuration>
+					</plugin>
+
+	                <plugin>
+						<groupId>org.eclipse.tycho</groupId>
+						<artifactId>tycho-p2-director-plugin</artifactId>
+						<version>${tycho.version}</version>
+						<executions>
+							<execution>
+								<!-- install the product using the p2 director -->
+								<id>materialize-products</id>
+								<goals>
+									<goal>materialize-products</goal>
+								</goals>
+							</execution>
+						</executions>
+
+						<configuration>
+							<id>minimal-build-product</id>
+							<goals>
+								<goal>materialize-products</goal>
+								<goal>archive-products</goal>
+							</goals>
+                            <installFeatures>true</installFeatures>
+							<products>
+								<product>
+									<!-- The uid in the .product file, NOT the name of the .product 
+										file -->
+									<id>terraarch</id>
+									<!-- select product with ID product.id; the archives get the classifiers 
+										"<os>.<ws>.<arch>" -->
+									<!-- attachId>other-linux-gtk-x86_64</attachId -->
+								</product>
+							</products>
+						</configuration>
+
+					</plugin>
+
+				</plugins>
+
+			</build>
+		</profile>
+
+
+
+	</profiles>
+
+</project>  

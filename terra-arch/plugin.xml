@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+  
+ 
+   <!-- net.terraarch.Activiator -->
+   
+    <extension
+          name="Terraform Archetect File Types"
+          point="org.eclipse.core.contenttype.contentTypes">
+	      <content-type 
+	       base-type="org.eclipse.core.runtime.text"
+	            file-extensions="tf,tpl,tfvars"
+	            id="terraarch.tf"
+	            name="Terraform"
+				priority="high"				
+				default-charset="UTF-8">
+	      </content-type>
+   </extension>
+
+   <extension id="net.terraarch.problemmarker" name="Terraform" 
+              point="org.eclipse.core.resources.markers">
+           <persistent value="false"/>
+           
+           <super type="org.eclipse.core.resources.problemmarker"/>   
+           <persistent value="false"> <!--we compute this each time we start up-->
+	      </persistent>
+	      <super type="org.eclipse.core.resources.textmarker"/>
+	     
+   </extension>           
+   
+   
+
+   <extension point="org.eclipse.ui.genericeditor.presentationReconcilers">
+      <presentationReconciler
+            class="net.terraarch.presentation.Reconciler"
+             inputTypes="org.eclipse.ui.IStorageEditorInput"
+            contentType="terraarch.tf">
+            
+            <enabledWhen>
+	  		    <with variable="editor">
+			       		<instanceof value="net.terraarch.TerraArchEditor"/>
+			       </with>          
+	         </enabledWhen>
+            
+      </presentationReconciler>
+   </extension>
+   
+     <extension point="org.eclipse.ui.editors">
+			   
+			   <editor
+			        default="true"
+		            class="net.terraarch.TerraArchEditor"
+		            contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
+		            id="net.terraarch.TerraArchEditor"
+		            name="Terra Architect">
+		         
+		         <contentTypeBinding contentTypeId="terraarch.tf">         
+		         </contentTypeBinding>
+		         
+		       </editor>
+		       
+			   <editorContentTypeBinding
+			         default="true"
+			         contentTypeId="terraarch.tf"
+			         editorId="net.terraarch.TerraArchEditor">
+			   </editorContentTypeBinding>
+
+	</extension>
+
+    <extension point="org.eclipse.ui.ide.markerResolution">
+	      <markerResolutionGenerator
+		         markerType="net.terraarch.problemmarker"
+		         class="net.terraarch.quickfix.QuickFixer"/>
+     </extension>
+    
+     <extension point="org.eclipse.ui.preferencePages">
+      <page
+            name="Terra Architect"
+            class="net.terraarch.preferences.TerraArchPreferencesPages"
+            id="net.terraarch.preferences.TerraArchPreferencesPages">
+      </page>
+   </extension>
+    
+   
+    <extension
+         point="org.eclipse.ui.menus">
+         
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:#TextEditorContext?before=additions">
+         <menu
+               id="tf.refactor.tools"
+               icon="./images/16x16.png"
+               label="Terra Architect">
+        <!-- https://wiki.eclipse.org/Command_Core_Expressions -->
+            <visibleWhen
+			       checkEnabled="false">
+			       <with variable="activeEditor">
+			       		<instanceof value="net.terraarch.TerraArchEditor"/>
+			       </with>
+			  		
+			</visibleWhen>
+            
+            <!-- command
+                  commandId="tf.refactor.tools.commands.merge"
+                  label="Find Modules"
+                  style="push">
+            </command -->
+         </menu>
+      </menuContribution>
+            
+      <!-- menuContribution
+            allPopups="false"
+            locationURI="popup:tf.refactor.tools?after=additions">
+         <command
+               commandId="tf.refactor.tools.commands.split"
+               label="Extract Variable"
+               style="push">
+         </command>
+      </menuContribution -->
+      
+      
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:tf.refactor.tools?after=additions">
+         <command
+               commandId="tf.refactor.tools.commands.rename"
+               label="Rename Field"
+               style="push">
+         </command>
+      </menuContribution>
+      
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:tf.refactor.tools?after=additions">
+         <command
+               commandId="tf.refactor.tools.commands.rename.batch"
+               label="Batch Rename"
+               style="push">
+         </command>
+      </menuContribution>
+           
+           
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:tf.refactor.tools?after=additions">
+         <command
+               commandId="tf.refactor.tools.commands.jumpto"
+               mnemonic="F3"
+               label="JumpToDef"
+               style="push">
+         </command>
+ 
+      </menuContribution>     
+   </extension>    
+          
+   <extension point="org.eclipse.ui.commands">
+   
+       <scope
+            name="Terra Architect Context"
+         	id="net.terraarch.scope"
+         	parent="org.eclipse.ui.contexts.window"
+         	 />
+    
+   		<command
+         	  defaultHandler="net.terraarch.menu.JumpToDef"
+              name="Jump To Definition"
+              description="Jump to the definition of this item"
+              id="tf.refactor.tools.commands.jumpto"/>
+                                  
+             <!-- orginal F3 action     org.eclipse.jdt.ui.actions.OpenAction  -->  
+             <!--            commands   org.eclipse.jdt.ui.edit.text.java.open.editor --> 
+             <!--                       org.eclipse.ui.open.declaration.command -->
+             <!--                       org.eclipse.ui.edit.text.open.hyperlink -->             
+                             
+   </extension>
+         
+  <!-- https://rsarte.hcldoc.com/help/index.jsp?topic=%2Forg.eclipse.platform.doc.isv%2Freference%2Fextension-points%2Forg_eclipse_ui_bindings.html -->
+  <!-- new schema required to ensure the key bindings do not collide -->
+  <!-- https://help.eclipse.org/2020-12/index.jsp?topic=%2Forg.eclipse.platform.doc.isv%2Fguide%2FwrkAdv_keyBindings.htm -->       
+   
+   <extension
+         point="org.eclipse.ui.contexts">
+	          <context
+	            id="net.terraarch.key.context"
+	            name="Terra Architect Context"
+	            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+	            parentId="org.eclipse.ui.textEditorScope"
+	            />
+	          	            
+	            
+   </extension>  <!-- the textEditorScope is key for CTL-J search to work etc -->       
+         
+         <!--    contextId="org.eclipse.ui.contexts.window" -->
+         
+   <extension point="org.eclipse.ui.bindings">
+	 	  
+       <key
+            commandId="tf.refactor.tools.commands.jumpto"
+            contextId="net.terraarch.key.context"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="F3"> 
+            
+       </key> 
+       
+       <key
+            commandId="tf.refactor.tools.commands.jumpto"
+            contextId="net.terraarch.key.context"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="CTRL+ALT+J"> 
+       </key>
+    
+       <key
+            commandId="tf.refactor.tools.commands.jumpto"
+            contextId="net.terraarch.key.context"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="ESC J"> 
+       </key>
+     
+   </extension>
+      
+    <extension point="org.eclipse.ui.handlers">
+	  	<handler
+	  		class="net.terraarch.menu.JumpToDef"
+	  		commandId="tf.refactor.tools.commands.jumpto">
+	  		 <activeWhen >
+	  		    <with variable="activeEditor">
+			       		<instanceof value="net.terraarch.TerraArchEditor"/>
+			       </with>  		
+	         </activeWhen>
+	  	</handler>	 
+	  	<handler
+	  		class="net.terraarch.menu.RenameHandler"
+	  		commandId="tf.refactor.tools.commands.rename">
+	  	</handler>	  
+	  	<handler
+	  		class="net.terraarch.menu.RenameHandlerBatch"
+	  		commandId="tf.refactor.tools.commands.rename.batch">
+	  	</handler>  	
+    </extension>
+  
+  
+  
+   <extension
+         point="org.eclipse.core.filebuffers.documentSetup">
+      <participant
+            class="net.terraarch.ValidatorDocumentSetupParticipant"
+            contentTypeId="terraarch.tf"
+            extensions="tf,tpl,tfvars">
+      </participant>
+   </extension>
+   
+      
+     <extension id="ide" point="org.eclipse.core.runtime.products"> 
+       <property
+				name="cssTheme"
+				value="org.eclipse.e4.ui.css.theme.e4_dark">
+		  </property>
+     </extension>
+    
+         <extension id="ide" point="org.eclipse.core.runtime.products"> 
+       <property
+				name="org.eclipse.ui.genericeditor.togglehighlight"
+				value="true">
+		  </property>
+     </extension>
+      
+    <extension 
+        point="org.eclipse.ui.perspectives"> 
+        <perspective 
+            id="net.terraarch.perspective" 
+            name="Terra Architect" 
+            class="net.terraarch.TerraArchPerspective" 
+            icon="./images/16x16.png"> 
+        </perspective> 
+    </extension> 
+    
+	<extension point="org.eclipse.core.runtime.adapters">
+	  <factory
+		    adaptableType="org.eclipse.ui.internal.genericeditor.ExtensionBasedTextEditor"
+		    class="net.terraarch.outline.OutlineFactory">
+	    <adapter type="org.eclipse.ui.views.contentoutline.IContentOutlinePage"/>
+	  </factory>
+	</extension>
+    
+   
+   <extension id="terraarch" point="org.eclipse.core.runtime.products">
+      <product
+            application="org.eclipse.ui.ide.workbench"
+            name="Terra Architect">
+         <property
+               name="windowImages"
+               value="images/16x16.png,images/32x32.png,images/48x48.png,images/64x64.png,images/128x128.png,images/256x256.png">
+         </property>
+         <property
+               name="aboutImage"
+               value="images/250x330.png">
+         </property>
+         <property
+               name="aboutText"
+               value=               
+                   "Terra Architect, an IDE for Terraform
+               &#xA;See preferences for version and build data.
+               &#xA;
+               &#xA;(c) Copyright Terra Architect, Eclipse contributors
+               &#xA;and others 2020 All rights reserved.
+               &#xA;
+               &#xA;Terra Architect and the Terra Architect logo are 
+               &#xA;trademarks of KMF Enterprises LLC. 
+               &#xA;Terra Architect logos cannot be altered without 
+               &#xA;KMF Enterprises permission.
+               &#xA;
+               &#xA;Other names may be trademarks of their respective owners. This product includes software developed by other open source projects including the Apache Software Foundation." >
+         </property>
+      </product>
+   </extension>
+   
+   <!--  extension point = "org.eclipse.ui.views">
+   		<category name="Terra Architect" id="net.terraarch.recommendation"/>
+   		<view name="Recommendations"
+   		   category="net.terraarch.recommendation"
+   		   class="net.terraarch.recommendation.RecommendationView"
+   		   id="net.terraarch.recommendation.RecommendationView"/>     
+   </extension  -->   
+   
+   <extension
+         point="org.eclipse.ui.genericeditor.contentAssistProcessors">
+      <contentAssistProcessor
+            class="net.terraarch.proposals.ContentAssistProcessor"
+            contentType="terraarch.tf">
+            
+                <enabledWhen>
+	  		    <with variable="editor">
+			       		<instanceof value="net.terraarch.TerraArchEditor"/>
+			       </with>          
+	         </enabledWhen>
+	         
+      </contentAssistProcessor>
+   </extension>
+     
+       
+
+
+
+</plugin>

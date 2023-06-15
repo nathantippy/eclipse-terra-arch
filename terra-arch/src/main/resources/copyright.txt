@@ -1,0 +1,15 @@
+
+Terra Architect, an IDE for Terraform
+See preferences for version and build data.
+
+(c) Copyright Terra Architect, Eclipse contributors
+and others 2020 All rights reserved.
+
+Terra Architect and the Terra Architect logo are 
+trademarks of KMF Enterprises LLC. 
+Terra Architect logos cannot be altered without 
+KMF Enterprises permission.
+
+Other names may be trademarks of their respective owners.
+This product includes software developed by other 
+open source projects including the Apache Software.

@@ -1,0 +1,21 @@
+
+***********
+    First create the public key with keytool program:
+    keytool -genkey -alias <alias name> -keystore <key file> (http://docs.oracle.com/javase/6/docs/technotes/tools/solaris/keytool.html).
+
+    Then sign the java archive package:
+    jarsigner -keystore <key file> -storepass <password 1 from steps before> -keypass <password 2 from steps before> -sigfile <the name of files .DSA .SF> -certs <java archive file name> <alias name> (http://docs.oracle.com/javase/6/docs/technotes/tools/solaris/jarsigner.html).
+***********
+
+keytool -genkey -validity 3650 -keysize 2048 -alias TerraArch -keystore terraarch-keystore
+
+Nathan Tippy
+Terraform Architect
+terraarch.net
+
+Alias:   TerraArch
+Path:    terraarch-keystore
+
+* check this in to private repo to ensure it is not lost, this proves updates come from the same place
+
+

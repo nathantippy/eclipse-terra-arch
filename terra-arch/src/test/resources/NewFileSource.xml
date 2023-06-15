@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xmlns="http://www.fixprotocol.org/ns/fast/td/1.1">
+
+    <template name="SourceFile" id="1">
+        <string name="FileName"        id="11" charset="unicode"/>
+        <string name="CannonicalName"  id="12" charset="unicode"/>
+        <byteVector name="MetaData"    id="13"/>
+    </template>
+   
+</templates>

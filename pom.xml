@@ -1,0 +1,352 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>net.terraarch</groupId>
+  <artifactId>terraform-architect</artifactId>
+  <version>1.1.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+   
+   <!-- Maven version prerequisite -->
+    <prerequisites>
+        <maven>3.0</maven>
+    </prerequisites>
+    
+    <!-- Repositories for dependencies -->
+    <repositories>
+
+        
+        <repository>
+            <id>2022-06</id>
+            <layout>p2</layout>
+            <url>http://download.eclipse.org/releases/2022-06/</url>
+        </repository>
+        <repository>
+            <id>2022-06-orbit-drops</id>
+            <layout>p2</layout>
+            <url>https://download.eclipse.org/tools/orbit/downloads/drops/R20220531185310/repository</url>
+        </repository>
+        
+    </repositories>
+      
+  
+    <!-- Project properties -->
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <tycho.version>2.4.0</tycho.version>
+        <maven.compiler.target>11</maven.compiler.target>
+        <maven.compiler.source>11</maven.compiler.source>
+    </properties>
+   			
+        <!--
+            HOW TO UPDATE THE VERSION:
+            mvn org.eclipse.tycho:tycho-versions-plugin:set-version -DnewVersion=1.0.24-SNAPSHOT
+            mvn org.eclipse.tycho:tycho-versions-plugin:set-version -DnewVersion=1.0.24
+            mvn org.eclipse.tycho:tycho-versions-plugin:set-version -DnewVersion=1.0.25-SNAPSHOT
+            mvn org.eclipse.tycho:tycho-versions-plugin:set-version -DnewVersion=1.0.25
+            
+            mvn org.eclipse.tycho:tycho-versions-plugin:set-version -DnewVersion=1.0.26-SNAPSHOT
+            
+            mvn org.eclipse.tycho:tycho-versions-plugin:set-version -DnewVersion=1.1.0-SNAPSHOT
+
+         -->
+           
+  	<profiles>
+
+		<profile>
+			<id>build</id>
+
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+  		  
+		   <build>
+		      <plugins>
+			      <plugin>
+				      <groupId>org.eclipse.tycho</groupId>
+				      <artifactId>tycho-versions-plugin</artifactId>
+				      <version>${tycho.version}</version>
+				  </plugin>
+				      
+			      <plugin>
+			        <!-- enable tycho build extension -->
+			        <groupId>org.eclipse.tycho</groupId>
+			        <artifactId>tycho-maven-plugin</artifactId>
+			        <version>${tycho.version}</version>
+			        <extensions>true</extensions>
+			      </plugin>
+		        <plugin>
+		          <groupId>org.eclipse.tycho</groupId>
+		          <artifactId>tycho-source-plugin</artifactId>
+		          <version>${tycho.version}</version>
+		        </plugin>
+		         
+		            <plugin>
+		                <groupId>org.eclipse.tycho</groupId>
+		                <artifactId>target-platform-configuration</artifactId>
+		                <version>${tycho.version}</version>
+		                <configuration>
+		                    <resolver>p2</resolver>
+		                    <environments> <!-- this drive the product build -->
+		                        <environment>
+		                            <os>win32</os>
+		                            <ws>win32</ws>
+		                            <arch>x86_64</arch>
+		                        </environment>
+		                        <environment>
+		                            <os>macosx</os>
+		                            <ws>cocoa</ws>
+		                            <arch>x86_64</arch>
+		                        </environment>
+		                        <environment>
+		                            <os>linux</os>
+		                            <ws>gtk</ws>
+		                            <arch>x86_64</arch>
+		                        </environment>
+		                    </environments>
+		                </configuration>
+		            </plugin>
+		        </plugins>
+		    </build>
+		  </profile>
+		  
+
+		<profile>
+			<id>image-updates</id>
+	  
+		   <build>
+		        <plugins>
+				
+		      <plugin>
+			      <groupId>org.eclipse.tycho</groupId>
+			      <artifactId>tycho-versions-plugin</artifactId>
+			      <version>${tycho.version}</version>
+			  </plugin>
+			      
+		      <plugin>
+		        <!-- enable tycho build extension -->
+		        <groupId>org.eclipse.tycho</groupId>
+		        <artifactId>tycho-maven-plugin</artifactId>
+		        <version>${tycho.version}</version>
+		        <extensions>true</extensions>
+		      </plugin>
+		        <plugin>
+		          <groupId>org.eclipse.tycho</groupId>
+		          <artifactId>tycho-source-plugin</artifactId>
+		          <version>${tycho.version}</version>
+		        </plugin>
+		        <plugin> 
+				    <groupId>org.apache.maven.plugins</groupId>
+				    <artifactId>maven-jarsigner-plugin</artifactId>
+				    <version>1.2</version>
+				        <configuration>
+				        
+				                  <keystore>${project.basedir}/../keystore.p12</keystore>
+						          <alias>${env.KEYSTORE_ALIASNAME}</alias>
+						          <storepass>${env.KEYSTORE_STOREPASS}</storepass>
+						          <keypass>${env.KEYSTORE_KEYPASS}</keypass>
+						         
+				        </configuration>
+				        <executions>
+				            <execution>
+				                <id>sign</id>
+				                <goals>
+				                    <goal>sign</goal>
+				                </goals>
+				            </execution>
+				         </executions>
+				  </plugin>
+			      
+		            <plugin>
+		                <groupId>org.eclipse.tycho</groupId>
+		                <artifactId>target-platform-configuration</artifactId>
+		                <version>${tycho.version}</version>
+		                <configuration>
+		                    <resolver>p2</resolver>
+		                    <environments> <!-- this drive the product build -->
+		                        <environment>
+		                            <os>win32</os>
+		                            <ws>win32</ws>
+		                            <arch>x86_64</arch>
+		                        </environment>
+		                        <environment>
+		                            <os>macosx</os>
+		                            <ws>cocoa</ws>
+		                            <arch>x86_64</arch>
+		                        </environment>
+		                        <environment>
+		                            <os>linux</os>
+		                            <ws>gtk</ws>
+		                            <arch>x86_64</arch>
+		                        </environment>
+		                    </environments>
+		                </configuration>
+		            </plugin>
+		        </plugins>
+		    </build>
+		  </profile>
+  
+  		<profile>
+			<id>image-new-build</id>
+	  
+		   <build>
+		        <plugins>
+				
+		      <plugin>
+			      <groupId>org.eclipse.tycho</groupId>
+			      <artifactId>tycho-versions-plugin</artifactId>
+			      <version>${tycho.version}</version>
+			  </plugin>
+			      
+		      <plugin>
+		        <!-- enable tycho build extension -->
+		        <groupId>org.eclipse.tycho</groupId>
+		        <artifactId>tycho-maven-plugin</artifactId>
+		        <version>${tycho.version}</version>
+		        <extensions>true</extensions>
+		      </plugin>
+		        <plugin>
+		          <groupId>org.eclipse.tycho</groupId>
+		          <artifactId>tycho-source-plugin</artifactId>
+		          <version>${tycho.version}</version>
+		        </plugin>
+		        <plugin> 
+				    <groupId>org.apache.maven.plugins</groupId>
+				    <artifactId>maven-jarsigner-plugin</artifactId>
+				    <version>1.2</version>
+				        <configuration>
+				        
+				                  <keystore>${project.basedir}/../keystore.p12</keystore>
+						          <alias>${env.KEYSTORE_ALIASNAME}</alias>
+						          <storepass>${env.KEYSTORE_STOREPASS}</storepass>
+						          <keypass>${env.KEYSTORE_KEYPASS}</keypass>
+						         
+				        </configuration>
+				        <executions>
+				            <execution>
+				                <id>sign</id>
+				                <goals>
+				                    <goal>sign</goal>
+				                </goals>
+				            </execution>
+				         </executions>
+				  </plugin>
+			      
+		            <plugin>
+		                <groupId>org.eclipse.tycho</groupId>
+		                <artifactId>target-platform-configuration</artifactId>
+		                <version>${tycho.version}</version>
+		                <configuration>
+		                    <resolver>p2</resolver>
+		                    <environments> <!-- this drive the product build -->
+		                        <environment>
+		                            <os>win32</os>
+		                            <ws>win32</ws>
+		                            <arch>x86_64</arch>
+		                        </environment>
+		                        <environment>
+		                            <os>macosx</os>
+		                            <ws>cocoa</ws>
+		                            <arch>x86_64</arch>
+		                        </environment>
+		                        <environment>
+		                            <os>linux</os>
+		                            <ws>gtk</ws>
+		                            <arch>x86_64</arch>
+		                        </environment>
+		                    </environments>
+		                </configuration>
+		            </plugin>
+		        </plugins>
+		    </build>
+		  </profile>
+  
+  
+		<profile>
+			<id>new-build</id>
+	  
+		   <build>
+		        <plugins>
+				
+		      <plugin>
+			      <groupId>org.eclipse.tycho</groupId>
+			      <artifactId>tycho-versions-plugin</artifactId>
+			      <version>${tycho.version}</version>
+			  </plugin>
+			      
+		      <plugin>
+		        <!-- enable tycho build extension -->
+		        <groupId>org.eclipse.tycho</groupId>
+		        <artifactId>tycho-maven-plugin</artifactId>
+		        <version>${tycho.version}</version>
+		        <extensions>true</extensions>
+		      </plugin>
+		        <plugin>
+		          <groupId>org.eclipse.tycho</groupId>
+		          <artifactId>tycho-source-plugin</artifactId>
+		          <version>${tycho.version}</version>
+		        </plugin>
+		        <plugin> 
+				    <groupId>org.apache.maven.plugins</groupId>
+				    <artifactId>maven-jarsigner-plugin</artifactId>
+				    <version>1.2</version>
+				        <configuration>
+				        
+				                  <keystore>${project.basedir}/../keystore.p12</keystore>
+						          <alias>${env.KEYSTORE_ALIASNAME}</alias>
+						          <storepass>${env.KEYSTORE_STOREPASS}</storepass>
+						          <keypass>${env.KEYSTORE_KEYPASS}</keypass>
+						         
+				        </configuration>
+				        <executions>
+				            <execution>
+				                <id>sign</id>
+				                <goals>
+				                    <goal>sign</goal>
+				                </goals>
+				            </execution>
+				         </executions>
+				  </plugin>
+			      
+		            <plugin>
+		                <groupId>org.eclipse.tycho</groupId>
+		                <artifactId>target-platform-configuration</artifactId>
+		                <version>${tycho.version}</version>
+		                <configuration>
+		                    <resolver>p2</resolver>
+		                    <environments> <!-- this drive the product build -->
+		                        <environment>
+		                            <os>win32</os>
+		                            <ws>win32</ws>
+		                            <arch>x86_64</arch>
+		                        </environment>
+		                        <environment>
+		                            <os>macosx</os>
+		                            <ws>cocoa</ws>
+		                            <arch>x86_64</arch>
+		                        </environment>
+		                        <environment>
+		                            <os>linux</os>
+		                            <ws>gtk</ws>
+		                            <arch>x86_64</arch>
+		                        </environment>
+		                    </environments>
+		                </configuration>
+		            </plugin>
+		        </plugins>
+		    </build>
+		  </profile>
+  
+  
+ </profiles> 
+   
+  <modules>
+    <module>terra-arch</module>  <!-- core plugin -->
+    <module>terra-arch-platform</module>
+    <module>terra-arch-feature</module>
+    <module>update-repo</module>   <!--  build the p2 repo -->
+    <module>build-product</module> <!--  build stand alone -->
+    <module>upload-image</module>  
+  </modules>
+  
+  	        
+  
+</project>

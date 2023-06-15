@@ -1,0 +1,67 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>net.TerraArch</artifactId>
+  <packaging>eclipse-feature</packaging>
+    <parent>
+  	<artifactId>terraform-architect</artifactId>
+  	<groupId>net.terraarch</groupId>
+    <version>1.1.0-SNAPSHOT</version>
+  </parent>
+  <properties>
+  <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  
+    <!-- NOTE: this is misleading, if this is run in eclipse any project settings
+               for JVM will end up in play not the values assigned here.
+               reminder, Tycho is not about using maven. -->
+    <maven.compiler.target>11</maven.compiler.target>
+    <maven.compiler.source>11</maven.compiler.source>
+    	<tycho.version>2.4.0</tycho.version>
+  </properties>
+  
+     
+  <prerequisites>
+    <maven>3.0</maven>
+  </prerequisites>
+      
+  
+  <build>
+
+    <plugins>
+		
+	  <plugin>
+        <!-- enable tycho build extension -->
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>tycho-maven-plugin</artifactId>
+        <version>${tycho.version}</version>
+        <extensions>true</extensions>
+      </plugin>
+                    	          		
+        
+            
+	 
+	
+	      
+	      <plugin>
+	        <groupId>org.eclipse.tycho</groupId>
+	        <artifactId>tycho-p2-plugin</artifactId>
+	        <version>${tycho.version}</version>
+	        <executions>
+	          <execution>
+	            <id>attach-p2-metadata</id>
+	            <phase>package</phase>
+	            <goals>
+	              <goal>p2-metadata</goal>
+	            </goals>
+	          </execution>
+	        </executions>
+	      </plugin>
+	  
+    </plugins>
+    
+    
+    
+  </build>
+
+
+
+</project>

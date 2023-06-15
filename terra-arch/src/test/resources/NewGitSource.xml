@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xmlns="http://www.fixprotocol.org/ns/fast/td/1.1">
+
+    <template name="Source" id="1">
+    
+        <string name="URL" id="11" charset="unicode"/>
+        <string name="Branch" id="12" charset="unicode"/>
+        <string name="TagId" id="13" charset="unicode"/>        
+        
+    </template>
+
+</templates>

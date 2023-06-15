@@ -1,0 +1,170 @@
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>net.terraarch</groupId>
+  <artifactId>upload-image</artifactId>
+
+  <packaging>pom</packaging>
+   
+  <parent>
+  	<artifactId>terraform-architect</artifactId>
+  	<groupId>net.terraarch</groupId>
+   <version>1.1.0-SNAPSHOT</version>
+  </parent>
+  <prerequisites>
+    <maven>3.0</maven>
+  </prerequisites>
+  
+  
+<profiles>		
+    	
+    <profile>		  
+		  <!-- USING:  https://github.com/davidmoten/aws-maven-plugin  -->
+	       <id>build</id> <!--  for local testing only -->
+	
+	    <activation>
+	      			<activeByDefault>true</activeByDefault>
+	    </activation>
+	    
+	      <build>	  
+	  		<plugins>
+	  			  		
+	  					<plugin>
+						  <artifactId>maven-assembly-plugin</artifactId>
+						  <version>2.6</version>
+						  <configuration>
+						    <finalName>terra-architect</finalName>
+						    <descriptors>
+						           <descriptor>linux-64.xml</descriptor>
+							      <descriptor>win-64.xml</descriptor>
+							      <descriptor>mac-64.xml</descriptor>
+						    </descriptors>
+						  </configuration>
+						  <executions>
+						    <execution>
+						      <id>make-assembly</id> <!-- this is used for inheritance merges -->
+						      <phase>package</phase> <!-- package, append to the packaging phase. -->
+						      <goals>
+						        <goal>single</goal> <!-- goals == mojos -->
+						      </goals>
+						    </execution>
+						  </executions>
+						</plugin>
+			
+			 </plugins>
+		   </build>
+		</profile>   	
+    				 
+    				 
+    				 
+    				 
+    				  
+	<profile>		  
+		  <!-- USING:  https://github.com/davidmoten/aws-maven-plugin  -->
+	      <id>image-new-build</id>
+	      <build>	  
+	  		<plugins>
+	  			  		
+	  					<plugin>
+						  <artifactId>maven-assembly-plugin</artifactId>
+						  <version>2.6</version>
+						  <configuration>
+						    <finalName>terra-architect</finalName>
+						    <descriptors>
+						      <descriptor>linux-64.xml</descriptor>
+						      <descriptor>win-64.xml</descriptor>
+						      <descriptor>mac-64.xml</descriptor>
+						    </descriptors>
+						  </configuration>
+						  <executions>
+						    <execution>
+						      <id>make-assembly</id> <!-- this is used for inheritance merges -->
+						      <phase>package</phase> <!-- package, append to the packaging phase. -->
+						      <goals>
+						        <goal>single</goal> <!-- goals == mojos -->
+						      </goals>
+						    </execution>
+						  </executions>
+						</plugin>
+						
+			  <plugin>
+				    <groupId>com.github.davidmoten</groupId>
+				    <artifactId>aws-maven-plugin</artifactId>
+				    <version>0.2.24</version>
+				    <executions>
+		                <execution>
+	   						 <phase>install</phase>
+		                    <goals>
+		                        <goal>deployS3</goal>
+		                    </goals>
+		                </execution>
+			        </executions>
+				    <configuration>
+				        <region>us-east-2</region>		        
+				        <inputDirectory>upload-image/target</inputDirectory>
+				        <bucketName>terraarch.net</bucketName>
+				        <outputBasePath>new-build-image</outputBasePath>
+				        
+				    </configuration>
+				</plugin>
+			 </plugins>
+		   </build>
+		</profile>     
+   
+   		<profile>		  
+		  <!-- USING:  https://github.com/davidmoten/aws-maven-plugin  -->
+	      <id>image-updates</id>
+	      <build>	  
+	  		<plugins>
+	  		
+			<plugin>
+						  <artifactId>maven-assembly-plugin</artifactId>
+						  <version>2.6</version>
+						  <configuration>
+						    <finalName>terra-architect</finalName>
+						    <descriptors>
+						      <descriptor>linux-64.xml</descriptor>
+						      <descriptor>win-64.xml</descriptor>
+						      <descriptor>mac-64.xml</descriptor>
+						    </descriptors>
+						  </configuration>
+						  <executions>
+						    <execution>
+						      <id>make-assembly</id> <!-- this is used for inheritance merges -->
+						      <phase>package</phase> <!-- package, append to the packaging phase. -->
+						      <goals>
+						        <goal>single</goal> <!-- goals == mojos -->
+						      </goals>
+						    </execution>
+						  </executions>
+			</plugin>
+	  		
+			  <plugin>
+				    <groupId>com.github.davidmoten</groupId>
+				    <artifactId>aws-maven-plugin</artifactId>
+				    <version>0.2.24</version>
+				    <executions>
+		                <execution>
+	   						 <phase>install</phase>
+		                    <goals>
+		                        <goal>deployS3</goal>
+		                    </goals>
+		                </execution>
+			        </executions>
+				    <configuration>
+				        <region>us-east-2</region>		        
+				        <inputDirectory>upload-image/target</inputDirectory>
+				        <bucketName>terraarch.net</bucketName>
+				        <outputBasePath>update-image</outputBasePath>
+				         <!-- path>build-product/target/${project.artifactId}-${project.version}-win32-win32-x86_64.zip</path -->
+				         
+				    </configuration>
+				</plugin>
+			 </plugins>
+		   </build>
+		</profile>   
+		 
+      
+</profiles>
+  
+</project>  

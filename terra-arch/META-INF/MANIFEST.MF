@@ -1,0 +1,42 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Terra Architect
+Bundle-SymbolicName: net.TerraArch.editor;singleton:=true
+Bundle-Version: 1.1.0.qualifier
+Bundle-Activator: net.terraarch.TerraArchActivator
+Bundle-Vendor: Nathan Tippy
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.core.resources,
+ org.eclipse.jface.text,
+ org.eclipse.jface,
+ org.eclipse.text,
+ org.eclipse.ui.editors,
+ org.eclipse.ui.workbench.texteditor,
+ org.eclipse.ui.workbench,
+ org.eclipse.ui.ide,
+ org.eclipse.ui.views,
+ org.eclipse.ui.navigator,
+ org.eclipse.ui.genericeditor,
+ org.eclipse.ui,
+ org.eclipse.help,
+ org.eclipse.swt,
+ org.eclipse.core.resources,
+ org.eclipse.ltk.core.refactoring,
+ org.eclipse.ltk.ui.refactoring,
+ org.eclipse.equinox.p2.engine,
+ org.eclipse.equinox.p2.core,
+ org.eclipse.equinox.p2.repository,
+ org.junit,
+ org.eclipse.jgit,
+ org.eclipse.text.quicksearch;bundle-version="1.0.400",
+ org.eclipse.osgi.services,
+ org.slf4j.api
+Automatic-Module-Name: net.TerraArch.editor
+Bundle-ClassPath: editor.jar
+Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-ActivationPolicy: lazy
+
+
+
+

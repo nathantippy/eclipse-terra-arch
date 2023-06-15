@@ -1,0 +1,128 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>net.terraarch</groupId>
+  <artifactId>update-repo</artifactId>
+
+  <packaging>eclipse-repository</packaging>
+   
+  <parent>
+  	<artifactId>terraform-architect</artifactId>
+  	<groupId>net.terraarch</groupId>
+   <version>1.1.0-SNAPSHOT</version>
+  </parent>
+  
+
+   
+  <prerequisites>
+    <maven>3.0</maven>
+  </prerequisites>
+      
+  <properties>
+  	<tycho.version>2.4.0</tycho.version>
+  </properties>
+  
+	<profiles>		
+  
+  <profile>
+	    <id>build</id>
+	
+	    <activation>
+	      <activeByDefault>true</activeByDefault>
+	    </activation>
+	  
+		  <build>
+			  <plugins>
+				  <plugin>
+			        <!-- enable tycho build extension -->
+			        <groupId>org.eclipse.tycho</groupId>
+			        <artifactId>tycho-maven-plugin</artifactId>
+			        <version>${tycho.version}</version>
+			        <extensions>true</extensions>
+			      </plugin>
+			      
+			    
+			      <plugin>
+			        <groupId>org.eclipse.tycho.extras</groupId>
+			        <artifactId>target-platform-validation-plugin</artifactId>
+			        <version>${tycho.version}</version>
+			      </plugin>
+			    
+			      <plugin>
+			        <groupId>org.eclipse.tycho</groupId>
+			        <artifactId>tycho-p2-publisher-plugin</artifactId>
+			        <version>${tycho.version}</version>
+			      </plugin>
+			      
+			      <plugin> <!--  BUILDS ZIP OF REPO -->
+					  <groupId>org.eclipse.tycho</groupId>
+					  <artifactId>tycho-p2-repository-plugin</artifactId>
+					  <version>${tycho.version}</version>
+					   <configuration> 
+				        <includeAllDependencies>true</includeAllDependencies>
+				       </configuration>
+				</plugin>
+				    </plugins>
+		      
+		  </build>
+	   </profile>  
+		 
+    
+   	  <profile>		  
+		  <!-- USING:  https://github.com/davidmoten/aws-maven-plugin  -->
+	      <id>image-new-build</id>
+	      <build>	  
+	  		<plugins>
+			  <plugin>
+				    <groupId>com.github.davidmoten</groupId>
+				    <artifactId>aws-maven-plugin</artifactId>
+				    <version>0.2.24</version>
+				    <executions>
+		                <execution>
+	   						 <phase>install</phase>
+		                    <goals>
+		                        <goal>deployS3</goal>
+		                    </goals>
+		                </execution>
+			        </executions>
+				    <configuration>
+				        <region>us-east-2</region>		        
+				        <inputDirectory>update-repo/target/repository</inputDirectory>
+				        <bucketName>terraarch.net</bucketName>
+				        <outputBasePath>new-build</outputBasePath>
+				    </configuration>
+				</plugin>
+			 </plugins>
+		   </build>
+		</profile> 
+   
+ 		
+		 <profile>		  
+		  <!-- USING:  https://github.com/davidmoten/aws-maven-plugin  -->
+	      <id>image-updates</id>
+	      <build>	  
+	  		<plugins>
+			  <plugin>
+				    <groupId>com.github.davidmoten</groupId>
+				    <artifactId>aws-maven-plugin</artifactId>
+				    <version>0.2.24</version>
+				    <executions>
+		                <execution>
+	   						 <phase>install</phase>
+		                    <goals>
+		                        <goal>deployS3</goal>
+		                    </goals>
+		                </execution>
+			        </executions>
+				    <configuration>
+				        <region>us-east-2</region>		        
+				        <inputDirectory>update-repo/target/repository</inputDirectory>
+				        <bucketName>terraarch.net</bucketName>
+				        <outputBasePath>update</outputBasePath>
+				    </configuration>
+				</plugin>
+			 </plugins>
+		   </build>
+		</profile> 
+   
+   </profiles>  
+</project>  
