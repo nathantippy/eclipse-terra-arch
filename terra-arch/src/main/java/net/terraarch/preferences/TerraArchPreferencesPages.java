@@ -26,7 +26,7 @@ import org.osgi.service.prefs.BackingStoreException;
 import net.terraarch.terraform.parse.ParseState;
 import net.terraarch.terraform.parse.doc.ThemeColors;
 
-import net.terraarch.MarketingMessages;
+
 import net.terraarch.TerraArchActivator;
 import net.terraarch.util.BrowserUtils;
 
@@ -131,21 +131,17 @@ public class TerraArchPreferencesPages extends PreferencePage implements IWorkbe
 	private boolean licenseKeyFields(Composite sourceControlGroup, boolean isTrial) {
 		Group titleGroup = new Group(sourceControlGroup, SWT.NONE);
         titleGroup.setLayout(new GridLayout(1, false));
-        titleGroup.setText("License Key");
+        titleGroup.setText("");
         
-		licenseKey = new Text(titleGroup, SWT.BORDER);
-		licenseKey.setToolTipText("Enter product license key here");
-		licenseKey.setCapture(true);
-		licenseKey.setFocus();
-		
-		GridData gridData = new GridData(SWT.LEFT, SWT.CENTER, true, false);
-	    gridData.widthHint = 350;
-	    licenseKey.setLayoutData(gridData);
-		//licenseKey.setText(InstanceScope.INSTANCE.getNode(TerraArchActivator.PLUGIN_ID).get(TerraPreferences.KEY_LICENSE_KEY,TerraPreferences.DEMO_KEY));
-
-		licenseKey.addVerifyListener(new TerraArchPreferencesPageLicenseValidation());
-		
-		//Listener(eventType, listener); //need to update preferences upon change, on pref save we must write to dynamo 
+               
+        
+	//	licenseKey = new Text(titleGroup, SWT.BORDER);
+    //	licenseKey.setToolTipText("Enter product license key here");
+    //	licenseKey.setCapture(true);
+    //	licenseKey.setFocus();		
+    //	GridData gridData = new GridData(SWT.LEFT, SWT.CENTER, true, false);
+    //	gridData.widthHint = 350;
+    //	licenseKey.setLayoutData(gridData);
 
 			
 			Label label = new Label(titleGroup, SWT.NONE);
@@ -230,14 +226,6 @@ public class TerraArchPreferencesPages extends PreferencePage implements IWorkbe
         		          "\nMade in USA of U.S. and open source components.");
         		          //https://www.ftc.gov/tips-advice/business-center/guidance/complying-made-usa-standard
 	
-		Group buttonGroup = new Group(titleGroup, SWT.SHADOW_NONE);
-        buttonGroup.setLayout(new RowLayout(SWT.HORIZONTAL));
-		  
-       	     	     
-	    Button cButton = new Button(buttonGroup, 0);
-	    cButton.setText("CopyrightAgreement");
-
-        cButton.setToolTipText("view copyright");
         
        	Label feedback = new Label(titleGroup, SWT.NONE);
                 
@@ -246,7 +234,6 @@ public class TerraArchPreferencesPages extends PreferencePage implements IWorkbe
 		          "  For recent updates use  https://terraarch.net/update\n"+
 		          "  For stable updates use  https://terraarch.net/update-lts\n" : "";        
 		          
-        //TODO: JJ, this will be replaced with new private messaging system
 		feedback.setText(
 		          "\nSend feedback and requests to:  support@terraarch.net       "+
 		          updateMessage
@@ -255,50 +242,7 @@ public class TerraArchPreferencesPages extends PreferencePage implements IWorkbe
 	}
 
 
-	
-/*
-//TODO: GG, turn on off auto insert..	
-	private boolean advancedOptions(Composite sourceControlGroup) {
-		Group titleGroup = new Group(sourceControlGroup, SWT.NONE);
-        titleGroup.setLayout(new RowLayout(SWT.VERTICAL));
-        titleGroup.setText("Advanced Options");
-              
-        
-        
-        Group autoInsertGroup = new Group(titleGroup, SWT.NONE);
-        autoInsertGroup.setLayout(new RowLayout(SWT.VERTICAL));
-        
-        GridData gridData = new GridData(SWT.LEFT, SWT.CENTER, true, false, 1, 1);
-        gridData.widthHint = 450;         
-		autoInsertGroup.setLayoutData(gridData);
-        autoInsertGroup.setText("Auto Insert");
 
-        Button disableButton = new Button(autoInsertGroup, SWT.RADIO);
-        disableButton.setText("disable");
-        Button enableButton = new Button(autoInsertGroup, SWT.RADIO);
-		enableButton.setText("enable");
-
-//        for(Preferences.TextColors tc : Preferences.TextColors.values()) {
-//            Button aButton = new Button(autoInsertGroup, SWT.RADIO);
-//             
-//            aButton.setSelection(Preferences.instance.textColors() == tc);    	
-//            aButton.setText(tc.name() + "   (" + tc.description() +")");
-//            aButton.addSelectionListener(new SelectionAdapter()  {
-//							@Override
-//							public void widgetSelected(SelectionEvent e) {
-//								Preferences.instance.textColors(tc);
-//							}            	
-//            	});
-//        }         
-        
-        
-		boolean isValid = Preferences.instance.state() == Preferences.State.InSync;
-		autoInsertGroup.setEnabled(isValid);
-		
-		return isValid;
-			
-    	}
-	//    */
 	
 	
 }
