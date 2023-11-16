@@ -160,42 +160,42 @@ public class ParseState {
 //	}
 
 
-	public static enum FUNCTIONS implements LiteralTerm {
+	public static enum FUNCTIONS implements LiteralTerm {  // checked against 1.5.x
 
 		// numeric
-		ABS("abs"), CEIL("ceil"), FLOOR("floor"), LOG("log"), MAX("max"), MIN("min"), PARSEINT("parseint"), POW("pow"),
-		SIGNUM("signum"), SUM("sum"), // SUM was added for .13
+		ABS("abs"), CEIL("ceil"), FLOOR("floor"), LOG("log"), MAX("max"), MIN("min"), PARSEINT("parseint"), POW("pow"), SIGNUM("signum"), 
 		// string
-		CHOMP("chomp"), FORMAT("format"), FORMATLIST("formatlist"), INDENT("indent"), JOIN("join"), LOWER("lower"),
-		REGEX("regex"), REGEXALL("regexall"), REPLACE("replace"), SPLIT("split"), STRREV("strrev"), SUBSTR("substr"),
-		TITLE("title"), TRIM("trim"), TRIMPREFIX("trimprefix"), TRIMSUFFIX("trimsuffix"), TRIMSPACE("trimspace"),
+		CHOMP("chomp"), ENDSWITH("endswith"), FORMAT("format"), FORMATLIST("formatlist"), INDENT("indent"), JOIN("join"), LOWER("lower"),
+		REGEX("regex"), REGEXALL("regexall"), REPLACE("replace"), SPLIT("split"), STARTSWITH("startswith"), STRCONTAINS("strcontains"),
+		STRREV("strrev"), SUBSTR("substr"), TITLE("title"), TRIM("trim"), TRIMPREFIX("trimprefix"), TRIMSUFFIX("trimsuffix"), TRIMSPACE("trimspace"),
 		UPPER("upper"),
 		// collection
-		CHUNKLIST("chunklist"), COALESCE("coalesce"), COALESCELIST("coalescelist"), COMPACT("compact"),
+		ALLTRUE("alltrue"),ANYTRUE("anytrue"),CHUNKLIST("chunklist"), COALESCE("coalesce"), COALESCELIST("coalescelist"), COMPACT("compact"),
 		CONCAT("concat"), CONTAINS("contains"), DISTINCT("distinct"), ELEMENT("element"), FLATTEN("flatten"),
-		INDEX("index"), KEYS("keys"), LENGTH("length"), LOOKUP("lookup"), MATCHKEYS("matchkeys"), MERGE("merge"),
-		RANGE("range"), REVERSE("reverse"), SETINTERSECTION("setintersection"), SETPRODUCT("setproduct"),
-		SETSUBTRACT("setsubtract"), SETUNION("setunion"), SLICE("slice"), SORT("sort"), TRANSPOSE("transpose"), VALUES("values"),
+		INDEX("index"), KEYS("keys"), LENGTH("length"), //LIST("list"),
+		LOOKUP("lookup"), //MAP("map")
+		MATCHKEYS("matchkeys"), MERGE("merge"), ONE("one"), RANGE("range"), REVERSE("reverse"), SETINTERSECTION("setintersection"), SETPRODUCT("setproduct"),
+		SETSUBTRACT("setsubtract"), SETUNION("setunion"), SLICE("slice"), SORT("sort"), SUM("sum"), TRANSPOSE("transpose"), VALUES("values"),
 		ZIPMAP("zipmap"),
 		// encoding
 		BASE64DECODE("base64decode"), BASE64ENCODE("base64encode"), BASE64GZIP("base64gzip"), CSVDECODE("csvdecode"),
-		JSONDECODE("jsondecode"), JSONENCODE("jsonencode"), URLENCODE("urlencode"), YAMLDECODE("yamldecode"),
-		YAMLENCODE("yamlencode"),
+		JSONDECODE("jsondecode"), JSONENCODE("jsonencode"), TEXTDECODEBASE64("textdcodebase64"), TEXTENCODEBASE64("textencodebase64"),
+		URLENCODE("urlencode"), YAMLDECODE("yamldecode"),YAMLENCODE("yamlencode"),
 		// filesystem
 		ABSPATH("abspath"), DIRNAME("dirname"), PATHEXPAND("pathexpand"), BASENAME("basename"), FILE("file"),
 		FILEEXISTS("fileexists"), FILESET("fileset"), FILEBASE64("filebase64"), TEMPLATEFILE("templatefile"),
 		// date and time
-		FORMATDATE("formatdate"), TIMEADD("timeadd"), TIMESTAMP("timestamp"),
+		FORMATDATE("formatdate"), PLANTIMESTAMP("plantimestamp"), TIMEADD("timeadd"), TIMECMP("timecmp"), TIMESTAMP("timestamp"),
 		// hash and crypto
 		BASE64SHA256("base64sha256"), BASE64SHA512("base64sha512"), BCRYPT("bcrypt"),
-		FILEBASE64SHA256("filebase64sha256"), FILEBASE64SHA512("filebase64sha512"), FILEMD5("filemd5"),
-		FLESHA1("filesha1"), FILESHA256("filesha256"), FILESHA512("filesha512"), MD5("md5"), RSADECRYPT("rsadecrypt"),
+		FILEBASE64SHA256("filebase64sha256"), FILEBASE64SHA512("filebase64sha512"), FILEMD5("filemd5"),	FLESHA1("filesha1"), 
+		FILESHA256("filesha256"), FILESHA512("filesha512"), MD5("md5"), RSADECRYPT("rsadecrypt"),
 		SHA1("sha1"), SHA256("sha256"), SHA512("sha512"), UUID("uuid"), UUIDV5("uuidv5"),
 		// ip network
-		CIDRHOST("cidrhost"), CIDRNETMASK("cidrnetmask"), CIDRSUBNET("cidrsubnet"),
+		CIDRHOST("cidrhost"), CIDRNETMASK("cidrnetmask"), CIDRSUBNET("cidrsubnet"), CIDRSUBNETS("cidrsubnets"),
 		// type conversions
-		CAN("can"), TOBOOL("tobool"), TOLIST("tolist"), TOMAP("tomap"), TONUMBER("tonumber"), TOSET("toset"),
-		TOSTRING("tostring"), TRY("try"),
+		CAN("can"), NONSENSITIVE("nonsensitive"), SENSITIVE("sensitive"), TOBOOL("tobool"), TOLIST("tolist"), TOMAP("tomap"),
+		TONUMBER("tonumber"), TOSET("toset"), TOSTRING("tostring"), TRY("try"), TYPE("type"),
 		// type definitions, colections and structures
 		LIST("list"), MAP("map"), SET("set"), OBJECT("object"), TUPLE("tuple");
 
