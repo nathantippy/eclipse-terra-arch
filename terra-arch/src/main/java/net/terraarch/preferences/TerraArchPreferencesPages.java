@@ -21,21 +21,34 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 import org.osgi.service.prefs.BackingStoreException;
-
+import org.eclipse.core.runtime.ILog;
+import org.eclipse.core.runtime.Platform;
+import org.eclipse.jface.text.ITextOperationTarget;
+import org.eclipse.jface.text.ITextViewer;
+import org.eclipse.ui.IEditorInput;
+import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.IFileEditorInput;
+import org.eclipse.ui.texteditor.ITextEditor;
 
 import net.terraarch.terraform.parse.ParseState;
+import net.terraarch.TerraArchActivator;
+import net.terraarch.util.FileUtils;
+import net.terraarch.terraform.parse.ParseState;
 import net.terraarch.terraform.parse.doc.ThemeColors;
-
-
 import net.terraarch.TerraArchActivator;
 import net.terraarch.util.BrowserUtils;
 
 public class TerraArchPreferencesPages extends PreferencePage implements IWorkbenchPreferencePage {
 
+	 // TODO: on here we need
+	        //  both update and update-tls urls
+	        //  web page to make donations
+	        //  github to make pull requests
+	
 	private static final ILog logger = Platform.getLog(TerraArchPreferencesPages.class);
 
-	
-	private Text licenseKey;
+	public static final String KEY_TEXT_COLORS       = "TextColors";
+
 	private Button[] textColorButtons;
 	
 	public TerraArchPreferencesPages() {
@@ -50,15 +63,12 @@ public class TerraArchPreferencesPages extends PreferencePage implements IWorkbe
 	@Override
 	public boolean performOk()	{ // NOTE: this is for the "Apply and Close" button outside our page
 	    IEclipsePreferences node = InstanceScope.INSTANCE.getNode(TerraArchActivator.PLUGIN_ID);
-	    
-	    boolean keyChanged = !node.get(TerraPreferences.KEY_LICENSE_KEY, "").equals(licenseKey.getText());
-		node.put(TerraPreferences.KEY_LICENSE_KEY,licenseKey.getText());		
+	 
 	    if (saveTextColors(node)) {	    
 	    	TerraPreferences.invalidateAllTextInAllEditors();
 	    }
 		try {
 			node.flush();
-
 		} catch (BackingStoreException e) {
 			e.printStackTrace();
 		} 
@@ -70,8 +80,6 @@ public class TerraArchPreferencesPages extends PreferencePage implements IWorkbe
 	protected void performApply() { // NOTE: this is for the "Apply" button inside our page		
 		IEclipsePreferences node = InstanceScope.INSTANCE.getNode(TerraArchActivator.PLUGIN_ID);
 		
-		boolean keyChanged = !node.get(TerraPreferences.KEY_LICENSE_KEY, "").equals(licenseKey.getText());
-		node.put(TerraPreferences.KEY_LICENSE_KEY,licenseKey.getText());		
 		if (saveTextColors(node)) {
 			TerraPreferences.invalidateAllTextInAllEditors();
 		}
@@ -117,15 +125,13 @@ public class TerraArchPreferencesPages extends PreferencePage implements IWorkbe
 		
 		boolean isValid = true;
 		isValid |= textColorFields(sourceControlGroup);
-		isValid |= licenseKeyFields(sourceControlGroup, false);
 		versionBuildFields(sourceControlGroup, true);
-	   // isValid |= advancedOptions(sourceControlGroup);			
 				
 		this.setValid(isValid);
 		return sourceControlGroup;
 	}
 	
-	public final static String[] buttonTexts = new String[] { "Subscribe at https://TerraArch.net", "Subscribe later"};
+	public final static String[] buttonTexts = new String[] { "Donate at https://TerraArch.net", "Subscribe later"};
 
 	
 	private boolean licenseKeyFields(Composite sourceControlGroup, boolean isTrial) {
@@ -133,15 +139,6 @@ public class TerraArchPreferencesPages extends PreferencePage implements IWorkbe
         titleGroup.setLayout(new GridLayout(1, false));
         titleGroup.setText("");
         
-               
-        
-	//	licenseKey = new Text(titleGroup, SWT.BORDER);
-    //	licenseKey.setToolTipText("Enter product license key here");
-    //	licenseKey.setCapture(true);
-    //	licenseKey.setFocus();		
-    //	GridData gridData = new GridData(SWT.LEFT, SWT.CENTER, true, false);
-    //	gridData.widthHint = 350;
-    //	licenseKey.setLayoutData(gridData);
 
 			
 			Label label = new Label(titleGroup, SWT.NONE);
@@ -164,7 +161,6 @@ public class TerraArchPreferencesPages extends PreferencePage implements IWorkbe
 		
 		
 		boolean isValid = true;
-		licenseKey.setEnabled(isValid);
 		
 		return isValid;
 	}
@@ -214,7 +210,6 @@ public class TerraArchPreferencesPages extends PreferencePage implements IWorkbe
 			textColorButtons[i].setSelection(textColors == values[i]);   
         }
 	}
-
 	
 	
 	private void versionBuildFields(Composite sourceControlGroup, boolean isSubscriber) {
@@ -241,7 +236,31 @@ public class TerraArchPreferencesPages extends PreferencePage implements IWorkbe
 		feedback.setCapture(true);
 	}
 
+	public static  void invalidateAllTextInAllEditors() {
+		try {
+			
+			FileUtils.visitEditors(e->{
+				IEditorPart p = e;
+				IEditorInput i = p.getEditorInput();
+				if ((p instanceof ITextEditor) && (i instanceof IFileEditorInput)) {
+						ITextEditor editor = (ITextEditor)p;
+						IFileEditorInput input = (IFileEditorInput)i;
+						
+						ITextOperationTarget target = (ITextOperationTarget)editor.getAdapter(ITextOperationTarget.class);
+						if (target instanceof ITextViewer) {
+							ITextViewer viewer = (ITextViewer) target;
+							viewer.invalidateTextPresentation();
+						}
+				}		
+			});
 
+		} catch (Throwable t) {
+			logger.error("invalidateAllTextInAllEditors",t);
+		}
+	}
+
+	
+	public static final TerraPreferences instance = new TerraPreferences();
 
 	
 	
