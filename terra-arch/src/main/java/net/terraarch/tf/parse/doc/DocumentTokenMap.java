@@ -1,12 +1,12 @@
-package net.terraarch.terraform.parse.doc;
+package net.terraarch.tf.parse.doc;
 
 import java.io.File;
 
-import net.terraarch.terraform.parse.BlockType;
-import net.terraarch.terraform.parse.BytesCollectorBase;
-import net.terraarch.terraform.parse.ParseState;
-import net.terraarch.terraform.parse.TermLayer;
-import net.terraarch.terraform.structure.StructureDataModule;
+import net.terraarch.tf.parse.BlockType;
+import net.terraarch.tf.parse.BytesCollectorBase;
+import net.terraarch.tf.parse.ParseState;
+import net.terraarch.tf.parse.TermLayer;
+import net.terraarch.tf.structure.StructureDataModule;
 import net.terraarch.util.AppendableBuilderReader;
 import net.terraarch.util.TrieParser;
 
@@ -48,7 +48,7 @@ public class DocumentTokenMap extends DocumentMap {
 	//	Token token = net.terraarch.presentation.TextColors.rainbowCache[textColor.ordinal()][rainbowWrapperStack.size()-1];
 	//	addToken((new TokenBlock(this.lineNumber, this.lastPosition, endPos,  token)));
         
-		TypeColors type = net.terraarch.terraform.parse.doc.TypeColors.I_TEXT;
+		TypeColors type = net.terraarch.tf.parse.doc.TypeColors.I_TEXT;
 		tc.addToken(this, endPos, type);
 	//	addToken((new TokenBlock(textColor.ordinal(), this.lastPosition, endPos, net.terraarch.presentation.TextColors.Types.OPERATION.ordinal())));
 		
@@ -138,7 +138,7 @@ public class DocumentTokenMap extends DocumentMap {
 		}
 		
 		
-		TypeColors type = net.terraarch.terraform.parse.doc.TypeColors.OPERATION;
+		TypeColors type = net.terraarch.tf.parse.doc.TypeColors.OPERATION;
 		tc.addToken(this, endPos, type);
 		this.lastPosition = endPos;
 		
@@ -157,7 +157,7 @@ public class DocumentTokenMap extends DocumentMap {
 		}
 		
 		
-		TypeColors type = net.terraarch.terraform.parse.doc.TypeColors.OPERATION;
+		TypeColors type = net.terraarch.tf.parse.doc.TypeColors.OPERATION;
 		tc.addToken(this, endPos, type);
 		this.lastPosition = endPos;
 		return keyOfTuple;
@@ -167,7 +167,7 @@ public class DocumentTokenMap extends DocumentMap {
 	public void interpolateClose(int endPos) {
 		//NO interpolation must happen inside of a block name
 		lastToken = UNDEF_ID;
-		int colorKey = !isInterpolationValidHere() ? net.terraarch.terraform.parse.doc.TypeColors.UNDEFINED.self().ordinal() :net.terraarch.terraform.parse.doc.TypeColors.I_TEXT.ordinal();
+		int colorKey = !isInterpolationValidHere() ? net.terraarch.tf.parse.doc.TypeColors.UNDEFINED.self().ordinal() :net.terraarch.tf.parse.doc.TypeColors.I_TEXT.ordinal();
 		boolean isErr = !isInterpolationValidHere();
 		String message = "Not supported in block identifiers";
 		tc.addTokenWithOptionalError(this, colorKey, isErr, message, endPos);
@@ -186,7 +186,7 @@ public class DocumentTokenMap extends DocumentMap {
 				tc.setLastIdentTokenBlock(null);
 			}
 		}
-		TypeColors type = net.terraarch.terraform.parse.doc.TypeColors.BLOCK;
+		TypeColors type = net.terraarch.tf.parse.doc.TypeColors.BLOCK;
 		tc.addToken(this, endPos, type);
 		this.lastPosition = endPos;
 	}
@@ -196,7 +196,7 @@ public class DocumentTokenMap extends DocumentMap {
 	public String interpolateOpen(int endPos, int size) {
 				
 		lastToken = UNDEF_ID;
-		int colorKey = !isInterpolationValidHere() ? net.terraarch.terraform.parse.doc.TypeColors.UNDEFINED.self().ordinal() : net.terraarch.terraform.parse.doc.TypeColors.TEXT.ordinal();
+		int colorKey = !isInterpolationValidHere() ? net.terraarch.tf.parse.doc.TypeColors.UNDEFINED.self().ordinal() : net.terraarch.tf.parse.doc.TypeColors.TEXT.ordinal();
 		{
 			boolean isErr = !isInterpolationValidHere();
 			String message = "Interpolation is not supported here";
@@ -205,7 +205,7 @@ public class DocumentTokenMap extends DocumentMap {
 		}
 		this.lastPosition = endPos-size;
 		
-		int colorKey2 = !isInterpolationValidHere() ? net.terraarch.terraform.parse.doc.TypeColors.UNDEFINED.self().ordinal() :net.terraarch.terraform.parse.doc.TypeColors.I_TEXT.ordinal();
+		int colorKey2 = !isInterpolationValidHere() ? net.terraarch.tf.parse.doc.TypeColors.UNDEFINED.self().ordinal() :net.terraarch.tf.parse.doc.TypeColors.I_TEXT.ordinal();
 		{
 			boolean isErr = !isInterpolationValidHere();
 			String message = "Interpolation is not supported here";
@@ -218,7 +218,7 @@ public class DocumentTokenMap extends DocumentMap {
 	public void iterateOpen(int endPos, int size) {
 				
 		lastToken = UNDEF_ID;
-		int colorKey = !isInterpolationValidHere() ? net.terraarch.terraform.parse.doc.TypeColors.UNDEFINED.self().ordinal() : net.terraarch.terraform.parse.doc.TypeColors.TEXT.ordinal();
+		int colorKey = !isInterpolationValidHere() ? net.terraarch.tf.parse.doc.TypeColors.UNDEFINED.self().ordinal() : net.terraarch.tf.parse.doc.TypeColors.TEXT.ordinal();
 		{
 			boolean isErr = !isInterpolationValidHere();
 			String message = "Iteration is not supported here";
@@ -227,7 +227,7 @@ public class DocumentTokenMap extends DocumentMap {
 		}
 		this.lastPosition = endPos-size;
 		
-		int colorKey2 = !isInterpolationValidHere() ? net.terraarch.terraform.parse.doc.TypeColors.UNDEFINED.self().ordinal() :net.terraarch.terraform.parse.doc.TypeColors.I_TEXT.ordinal();
+		int colorKey2 = !isInterpolationValidHere() ? net.terraarch.tf.parse.doc.TypeColors.UNDEFINED.self().ordinal() :net.terraarch.tf.parse.doc.TypeColors.I_TEXT.ordinal();
 		{
 			boolean isErr = !isInterpolationValidHere();
 			String message = "Iteration is not supported here";
@@ -272,7 +272,7 @@ public class DocumentTokenMap extends DocumentMap {
 			}
 			if (id>=0) {//can only be positive if this is layer 1		
 				
-				TypeColors type = net.terraarch.terraform.parse.doc.TypeColors.IDENT_NAMESPACE;
+				TypeColors type = net.terraarch.tf.parse.doc.TypeColors.IDENT_NAMESPACE;
 				tc.addToken(this, endPos, type);
 				
 			} else {	
@@ -289,7 +289,7 @@ public class DocumentTokenMap extends DocumentMap {
 		} else {
 		
 		
-			TypeColors type = net.terraarch.terraform.parse.doc.TypeColors.IDENT_DETAIL;
+			TypeColors type = net.terraarch.tf.parse.doc.TypeColors.IDENT_DETAIL;
 			tc.addToken(this, endPos, type);
 
             //this is for generated arrays not a proper identifer
@@ -318,7 +318,7 @@ public class DocumentTokenMap extends DocumentMap {
 			    id = TermProcessingImpl.namespaceParser(this, termLayer, value);
 			}
 			if (id>=0) {	
-				TypeColors type = net.terraarch.terraform.parse.doc.TypeColors.IDENT_NAMESPACE;
+				TypeColors type = net.terraarch.tf.parse.doc.TypeColors.IDENT_NAMESPACE;
 				tc.addToken(this, endPos, type);
 			} else {	
 				if (value.byteLength()>0) {
@@ -332,7 +332,7 @@ public class DocumentTokenMap extends DocumentMap {
 			return value;
 		} else {
 			
-			TypeColors type = net.terraarch.terraform.parse.doc.TypeColors.IDENT_USAGE;
+			TypeColors type = net.terraarch.tf.parse.doc.TypeColors.IDENT_USAGE;
 			tc.addToken(this, endPos, type);
 
             //this is for generated arrays not a proper identifer
@@ -355,14 +355,14 @@ public class DocumentTokenMap extends DocumentMap {
 			
 			int limit = ( termLayer.namespace() == ParseState.NAMESPACES.DATA.ordinal() ) ? 3: 2;
 			if (termLayerNo <= limit) {
-				TypeColors type = net.terraarch.terraform.parse.doc.TypeColors.IDENT_USAGE;
+				TypeColors type = net.terraarch.tf.parse.doc.TypeColors.IDENT_USAGE;
 				tc.addToken(this, endPos, type);
 			} else {
-			    TypeColors type = net.terraarch.terraform.parse.doc.TypeColors.IDENT_DETAIL;
+			    TypeColors type = net.terraarch.tf.parse.doc.TypeColors.IDENT_DETAIL;
 				tc.addToken(this, endPos, type);
 			}
 		} else {
-			TypeColors type = net.terraarch.terraform.parse.doc.TypeColors.IDENT_USAGE;
+			TypeColors type = net.terraarch.tf.parse.doc.TypeColors.IDENT_USAGE;
 			tc.addToken(this, endPos, type);		
 		}
 		this.lastPosition = endPos;
@@ -392,9 +392,9 @@ public class DocumentTokenMap extends DocumentMap {
 			
 				if (((int)idx1) == ParseState.LITERALS.SPLAT.ordinal()) {
 				    //splat behaves like an interpolation or expansion so we use that color
-				    t1=net.terraarch.terraform.parse.doc.TypeColors.I_TEXT.ordinal();
+				    t1=net.terraarch.tf.parse.doc.TypeColors.I_TEXT.ordinal();
 				} else {
-					t1=net.terraarch.terraform.parse.doc.TypeColors.NUMBER_OR_LITERAL.ordinal();
+					t1=net.terraarch.tf.parse.doc.TypeColors.NUMBER_OR_LITERAL.ordinal();
 				}
 				
 			} else {
@@ -402,7 +402,7 @@ public class DocumentTokenMap extends DocumentMap {
 				long idx = value.lookupExactMatch(localReader, blockTypeParser);
 				
 				if (idx>=0 && blockDepth==0) { //only block starts
-					t1 = net.terraarch.terraform.parse.doc.TypeColors.BLOCK.ordinal();
+					t1 = net.terraarch.tf.parse.doc.TypeColors.BLOCK.ordinal();
 					//NOTE: if desired we could color variable defs different...
 					this.activeBlockType = (int)idx; //for checking later, only for root
 				} else {
@@ -412,7 +412,7 @@ public class DocumentTokenMap extends DocumentMap {
 						
 						//NOTE: we do not know what "experiaments" will be allowed by hashi so we allow all strings
 						//TODO: YY, we may want to restrict this to a safe list
-						t1 = net.terraarch.terraform.parse.doc.TypeColors.IDENT_NAMESPACE.ordinal();
+						t1 = net.terraarch.tf.parse.doc.TypeColors.IDENT_NAMESPACE.ordinal();
 												
 					} else {
 						
@@ -424,7 +424,7 @@ public class DocumentTokenMap extends DocumentMap {
 							}
 													    					    
 						} else {
-						    t1 = net.terraarch.terraform.parse.doc.TypeColors.IDENT_DETAIL.ordinal();
+						    t1 = net.terraarch.tf.parse.doc.TypeColors.IDENT_DETAIL.ordinal();
 						}
 					}
 				}
@@ -444,18 +444,18 @@ public class DocumentTokenMap extends DocumentMap {
 				long varIdx = value.lookupExactMatch(localReader, blockType.exclusiveValidChildren());
 							
 				if (varIdx>=0) {
-					t2 = net.terraarch.terraform.parse.doc.TypeColors.IDENT_ASSIGN.ordinal();
+					t2 = net.terraarch.tf.parse.doc.TypeColors.IDENT_ASSIGN.ordinal();
 				} else {
 				    errorMessage2.append("Undefined identifier for "+blockType+", found '"+value+"'"); 
-					t2 = net.terraarch.terraform.parse.doc.TypeColors.UNDEFINED.self().ordinal();
+					t2 = net.terraarch.tf.parse.doc.TypeColors.UNDEFINED.self().ordinal();
 				}
 								
 			} else {
-				t2 = net.terraarch.terraform.parse.doc.TypeColors.IDENT_ASSIGN.ordinal();
+				t2 = net.terraarch.tf.parse.doc.TypeColors.IDENT_ASSIGN.ordinal();
 			}
 			
 			
-			int t3 = net.terraarch.terraform.parse.doc.TypeColors.NUMBER_OR_LITERAL.ordinal();  //NOTE: this color is for a tuple assignment with :
+			int t3 = net.terraarch.tf.parse.doc.TypeColors.NUMBER_OR_LITERAL.ordinal();  //NOTE: this color is for a tuple assignment with :
 			
 						
 			String msg1 = errorMessage1.toString();
@@ -484,15 +484,15 @@ public class DocumentTokenMap extends DocumentMap {
 		if (isCollectingBlockLabels()) {
 			//this string is a block label
 			if (blockDepth==0) {
-				TypeColors type = net.terraarch.terraform.parse.doc.TypeColors.BLOCK_LABEL;
+				TypeColors type = net.terraarch.tf.parse.doc.TypeColors.BLOCK_LABEL;
 				tc.addToken(this, endPos, type);
 			} else {
 				//NOTE: text begin can not start directly after another text end or ident end.
 				if (lastToken != TEXT_ID && lastToken != IDENT_ID) {
-					TypeColors type = net.terraarch.terraform.parse.doc.TypeColors.IDENT_DEF;
+					TypeColors type = net.terraarch.tf.parse.doc.TypeColors.IDENT_DEF;
 					tc.addToken(this, endPos, type);	
 				} else {
-				     TypeColors type = net.terraarch.terraform.parse.doc.TypeColors.UNDEFINED.self();
+				     TypeColors type = net.terraarch.tf.parse.doc.TypeColors.UNDEFINED.self();
 					String message = "Text may not start here, is } missing somewhere above this point?";
 					tc.addTokenTypeWithError(this, type, message, endPos);
 				}
@@ -501,7 +501,7 @@ public class DocumentTokenMap extends DocumentMap {
 			}
 		} else {
 			//this string is not part of the block address
-			TypeColors type = net.terraarch.terraform.parse.doc.TypeColors.TEXT;
+			TypeColors type = net.terraarch.tf.parse.doc.TypeColors.TEXT;
 			tc.addToken(this, endPos, type);
 		}
 		lastToken = UNDEF_ID;
@@ -514,21 +514,21 @@ public class DocumentTokenMap extends DocumentMap {
 		if (isCollectingBlockLabels()) {
 			//this string is a block label
 			if (blockDepth==0) {
-				TypeColors type = net.terraarch.terraform.parse.doc.TypeColors.BLOCK_LABEL;
+				TypeColors type = net.terraarch.tf.parse.doc.TypeColors.BLOCK_LABEL;
 				tc.addToken(this, endPos, type);
 			} else {
-				TypeColors type = net.terraarch.terraform.parse.doc.TypeColors.IDENT_DEF;
+				TypeColors type = net.terraarch.tf.parse.doc.TypeColors.IDENT_DEF;
 				tc.addToken(this, endPos, type);
 			}
 		} else {
 			//this string is not part of the block address
 			
 			if (quotes.length>1 && quotes[0]<=' ') { //heredoc stop must not start with white space
-			    TypeColors type = net.terraarch.terraform.parse.doc.TypeColors.UNDEFINED.self();
+			    TypeColors type = net.terraarch.tf.parse.doc.TypeColors.UNDEFINED.self();
 				String message = "Unexpected space before heredoc";
 				tc.addTokenTypeWithError(this, type, message, endPos);
 			} else {			
-				TypeColors type = net.terraarch.terraform.parse.doc.TypeColors.HERE_DOC;
+				TypeColors type = net.terraarch.tf.parse.doc.TypeColors.HERE_DOC;
 				tc.addToken(this, endPos, type);
 			}
 		}
@@ -543,15 +543,15 @@ public class DocumentTokenMap extends DocumentMap {
 		if (isCollectingBlockLabels()) {
 			//this string is a block label
 			if (blockDepth==0) {
-				TypeColors type = net.terraarch.terraform.parse.doc.TypeColors.BLOCK_LABEL;
+				TypeColors type = net.terraarch.tf.parse.doc.TypeColors.BLOCK_LABEL;
 				tc.addToken(this, endPos, type);
 			} else {
-				TypeColors type = net.terraarch.terraform.parse.doc.TypeColors.IDENT_DEF;
+				TypeColors type = net.terraarch.tf.parse.doc.TypeColors.IDENT_DEF;
 				tc.addToken(this, endPos, type);
 			}
 		} else {
 			//this string is not part of the block address
-			TypeColors type = net.terraarch.terraform.parse.doc.TypeColors.TEXT;
+			TypeColors type = net.terraarch.tf.parse.doc.TypeColors.TEXT;
 			tc.addToken(this, endPos, type);
 		}
 		
@@ -566,16 +566,16 @@ public class DocumentTokenMap extends DocumentMap {
 		int level = super.blockOpen(endPos);
 		
 		if (1 == level) {
-			TypeColors type = net.terraarch.terraform.parse.doc.TypeColors.BLOCK;
+			TypeColors type = net.terraarch.tf.parse.doc.TypeColors.BLOCK;
 			tc.addToken(this, endPos, type);
 		} else {
 			// this can be after a block ident or = but never after a " that is an error.
 			
 			if (lastToken!=TEXT_ID || level==2) { //level 2 is needed to keep this from an error: terraform{ backend "s3" {} }
-				TypeColors type = net.terraarch.terraform.parse.doc.TypeColors.IDENT_DEF;
+				TypeColors type = net.terraarch.tf.parse.doc.TypeColors.IDENT_DEF;
 				tc.addToken(this, endPos, type);
 			} else {			
-				TypeColors type = net.terraarch.terraform.parse.doc.TypeColors.UNDEFINED.self();
+				TypeColors type = net.terraarch.tf.parse.doc.TypeColors.UNDEFINED.self();
 				String message = "The { may not appear here. Is a } missing above this point?";
 				tc.addTokenTypeWithError(this, type, message, endPos);
 			}
@@ -594,12 +594,12 @@ public class DocumentTokenMap extends DocumentMap {
 		int level = super.blockClose(endPos);
 		
 		if (0 == level) {
-			TypeColors type = net.terraarch.terraform.parse.doc.TypeColors.BLOCK;
+			TypeColors type = net.terraarch.tf.parse.doc.TypeColors.BLOCK;
 			tc.addToken(this, endPos, type);
 			
 			activeBlockType = -1;//clear block root type	
 		} else {
-			TypeColors type = net.terraarch.terraform.parse.doc.TypeColors.IDENT_DEF;
+			TypeColors type = net.terraarch.tf.parse.doc.TypeColors.IDENT_DEF;
 			tc.addToken(this, endPos, type);
 		}
 				
@@ -647,11 +647,11 @@ public class DocumentTokenMap extends DocumentMap {
 		boolean isFunction = name.lookupExactMatch(localReader, functionNameParser)>=0;
 		
 		if (isFunction) {
-			TypeColors type = net.terraarch.terraform.parse.doc.TypeColors.FUNCTION;
+			TypeColors type = net.terraarch.tf.parse.doc.TypeColors.FUNCTION;
 			int endPos = filePosition-1;
 			tc.addTokenSimple(this, type, endPos);
 		} else {
-			TypeColors type = net.terraarch.terraform.parse.doc.TypeColors.UNDEFINED.self();
+			TypeColors type = net.terraarch.tf.parse.doc.TypeColors.UNDEFINED.self();
 			String message = "Expected function name but found '"+name+"'";
 			int endPos = filePosition-1;
 			tc.addTokenTypeWithError(this, type, message, endPos);
@@ -699,7 +699,7 @@ public class DocumentTokenMap extends DocumentMap {
 	@Override
 	public String pushOperation(int endPos, String op) {
 		lastToken = UNDEF_ID;
-		TypeColors type = net.terraarch.terraform.parse.doc.TypeColors.OPERATION;
+		TypeColors type = net.terraarch.tf.parse.doc.TypeColors.OPERATION;
 		tc.addToken(this, endPos, type);
 		this.lastPosition = endPos;
 		return super.pushOperation(endPos, op);
@@ -763,7 +763,7 @@ public class DocumentTokenMap extends DocumentMap {
 	@Override
 	public String numberComplete(int endPos) {
 		lastToken = UNDEF_ID;
-		TypeColors type = net.terraarch.terraform.parse.doc.TypeColors.NUMBER_OR_LITERAL;
+		TypeColors type = net.terraarch.tf.parse.doc.TypeColors.NUMBER_OR_LITERAL;
 		tc.addToken(this, endPos, type);
 		this.lastPosition = endPos;
 		return super.numberComplete(endPos);
@@ -771,28 +771,28 @@ public class DocumentTokenMap extends DocumentMap {
 	
 	@Override
 	public BytesCollectorBase multiLineComment(int endPos) {
-		tc.addToken(this, endPos, net.terraarch.terraform.parse.doc.TypeColors.COMMENT);
+		tc.addToken(this, endPos, net.terraarch.tf.parse.doc.TypeColors.COMMENT);
 		this.lastPosition = endPos;
 		return super.multiLineComment(endPos);
 	}
 	
 	@Override
 	public File multiLineCommentFinish(int endPos) {
-		tc.addToken(this, endPos, net.terraarch.terraform.parse.doc.TypeColors.COMMENT);
+		tc.addToken(this, endPos, net.terraarch.tf.parse.doc.TypeColors.COMMENT);
 		this.lastPosition = endPos;
 		return super.multiLineCommentFinish(endPos);
 	}
 
 	@Override
 	public BytesCollectorBase singleLineComment(int endPos) {
-		tc.addToken(this, endPos, net.terraarch.terraform.parse.doc.TypeColors.COMMENT);
+		tc.addToken(this, endPos, net.terraarch.tf.parse.doc.TypeColors.COMMENT);
 		this.lastPosition = endPos;
 		return super.singleLineComment(endPos);
 	}
 
 	@Override
 	public File singleLineCommentFinish(int endPos) {
-		tc.addToken(this, endPos, net.terraarch.terraform.parse.doc.TypeColors.COMMENT);
+		tc.addToken(this, endPos, net.terraarch.tf.parse.doc.TypeColors.COMMENT);
 		this.lastPosition = endPos;
 		return super.singleLineCommentFinish(endPos);
 	}

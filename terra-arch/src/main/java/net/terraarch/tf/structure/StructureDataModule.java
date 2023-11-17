@@ -1,4 +1,4 @@
-package net.terraarch.terraform.structure;
+package net.terraarch.tf.structure;
 //
 import java.io.File;
 import java.lang.ref.SoftReference;
@@ -18,11 +18,11 @@ import org.eclipse.jgit.api.Git;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import net.terraarch.terraform.parse.BlockType;
-import net.terraarch.terraform.parse.ParseBuffer;
-import net.terraarch.terraform.parse.provider.ProviderIndexRecord;
-import net.terraarch.terraform.parse.version.VersionConstraint;
-import net.terraarch.terraform.parse.version.VersionDTO;
+import net.terraarch.tf.parse.BlockType;
+import net.terraarch.tf.parse.ParseBuffer;
+import net.terraarch.tf.parse.provider.ProviderIndexRecord;
+import net.terraarch.tf.parse.version.VersionConstraint;
+import net.terraarch.tf.parse.version.VersionDTO;
 import net.terraarch.util.AppendableBuilder;
 import net.terraarch.util.AppendableBuilderReader;
 import net.terraarch.util.TrieParser;

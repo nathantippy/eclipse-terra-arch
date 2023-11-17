@@ -1,4 +1,4 @@
-package net.terraarch.terraform.structure;
+package net.terraarch.tf.structure;
 
 import java.io.File;
 import java.io.InputStream;
@@ -19,7 +19,7 @@ import org.eclipse.jgit.api.LogCommand;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import net.terraarch.terraform.parse.version.VersionDTO;
+import net.terraarch.tf.parse.version.VersionDTO;
 
 public class StorageCache {
 

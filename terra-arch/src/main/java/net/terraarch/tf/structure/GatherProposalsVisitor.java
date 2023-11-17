@@ -1,4 +1,4 @@
-package net.terraarch.terraform.structure;
+package net.terraarch.tf.structure;
 
 import net.terraarch.util.AppendableBuilderReader;
 import net.terraarch.util.TrieParserVisitor;

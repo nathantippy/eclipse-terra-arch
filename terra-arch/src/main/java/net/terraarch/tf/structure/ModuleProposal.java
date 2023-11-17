@@ -1,6 +1,6 @@
-package net.terraarch.terraform.structure;
+package net.terraarch.tf.structure;
 
-import static net.terraarch.terraform.structure.StructureDataModule.lookupDef;
+import static net.terraarch.tf.structure.StructureDataModule.lookupDef;
 
 import java.util.ArrayList;
 import java.util.HashSet;

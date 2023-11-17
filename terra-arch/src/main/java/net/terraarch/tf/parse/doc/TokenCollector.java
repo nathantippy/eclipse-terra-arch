@@ -1,10 +1,10 @@
-package net.terraarch.terraform.parse.doc;
+package net.terraarch.tf.parse.doc;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.terraarch.terraform.parse.TermLayer;
+import net.terraarch.tf.parse.TermLayer;
 import net.terraarch.util.AppendableBuilderReader;
 
 

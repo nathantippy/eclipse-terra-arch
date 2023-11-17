@@ -1,7 +1,7 @@
-package net.terraarch.terraform.structure;
+package net.terraarch.tf.structure;
 
 
-import net.terraarch.terraform.parse.BlockType;
+import net.terraarch.tf.parse.BlockType;
 import net.terraarch.util.Appendables;
 
 public abstract class IndexNode {

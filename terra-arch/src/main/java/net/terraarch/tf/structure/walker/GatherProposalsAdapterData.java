@@ -1,7 +1,7 @@
-package net.terraarch.terraform.structure.walker;
+package net.terraarch.tf.structure.walker;
 
 
-import net.terraarch.terraform.structure.GatheredFieldType;
+import net.terraarch.tf.structure.GatheredFieldType;
 
 public class GatherProposalsAdapterData<T> implements Comparable<GatherProposalsAdapterData<T>>{
 	public final int typeEndPos;

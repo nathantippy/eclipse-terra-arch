@@ -23,11 +23,10 @@ import org.eclipse.ui.texteditor.ITextEditor;
 
 import net.terraarch.DeepReview;
 import net.terraarch.TerraArchActivator;
-import net.terraarch.preferences.TerraPreferences;
-import net.terraarch.terraform.parse.doc.DocumentTokenMap;
-import net.terraarch.terraform.structure.StructureDataFile;
-import net.terraarch.terraform.structure.StructureDataModule;
-import net.terraarch.util.AcceptLicenseUtil;
+import net.terraarch.preferences.TerraArchPreferencesPages;
+import net.terraarch.tf.parse.doc.DocumentTokenMap;
+import net.terraarch.tf.structure.StructureDataFile;
+import net.terraarch.tf.structure.StructureDataModule;
 import net.terraarch.util.FileUtils;
 import net.terraarch.util.ReactiveJobState;
 

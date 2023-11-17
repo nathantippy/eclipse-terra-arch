@@ -1,9 +1,9 @@
-package net.terraarch.terraform.structure.walker;
+package net.terraarch.tf.structure.walker;
 
-import net.terraarch.terraform.structure.GatherProposals;
-import net.terraarch.terraform.structure.GatherProposalsVisitor;
-import net.terraarch.terraform.structure.GatheredFieldType;
-import net.terraarch.terraform.structure.StructureDataModule;
+import net.terraarch.tf.structure.GatherProposals;
+import net.terraarch.tf.structure.GatherProposalsVisitor;
+import net.terraarch.tf.structure.GatheredFieldType;
+import net.terraarch.tf.structure.StructureDataModule;
 import net.terraarch.util.AppendableBuilderReader;
 
 public class GatherAllDefinitionProposals<T extends GatherProposalsVisitor> extends GatherProposals<T>  {

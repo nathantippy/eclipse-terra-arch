@@ -1,4 +1,4 @@
-package net.terraarch.terraform.parse.provider;
+package net.terraarch.tf.parse.provider;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,9 +6,9 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import net.terraarch.terraform.parse.version.VersionConstraint;
-import net.terraarch.terraform.parse.version.VersionConstraints;
-import net.terraarch.terraform.parse.version.VersionDTO;
+import net.terraarch.tf.parse.version.VersionConstraint;
+import net.terraarch.tf.parse.version.VersionConstraints;
+import net.terraarch.tf.parse.version.VersionDTO;
 import net.terraarch.util.TrieParser;
 import net.terraarch.util.TrieParserReader;
 

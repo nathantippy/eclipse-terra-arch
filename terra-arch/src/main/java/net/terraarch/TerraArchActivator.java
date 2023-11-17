@@ -31,11 +31,11 @@ import org.osgi.framework.BundleContext;
 
 import net.terraarch.outline.TerraArchOutlineView;
 import net.terraarch.preferences.TerraPreferences;
-import net.terraarch.terraform.parse.ParseState;
-import net.terraarch.terraform.structure.StorageCache;
-import net.terraarch.terraform.structure.StructureDataFile;
-import net.terraarch.terraform.structure.StructureDataModule;
-import net.terraarch.terraform.structure.StructureDataModuleManager;
+import net.terraarch.tf.parse.ParseState;
+import net.terraarch.tf.structure.StorageCache;
+import net.terraarch.tf.structure.StructureDataFile;
+import net.terraarch.tf.structure.StructureDataModule;
+import net.terraarch.tf.structure.StructureDataModuleManager;
 import net.terraarch.util.NetworkUtil;
 import net.terraarch.util.TrieParserReader;
 
@@ -135,7 +135,7 @@ public class TerraArchActivator extends AbstractUIPlugin implements BundleActiva
 	 *           		source = "NAMESPACE/NAME"  //  source-addresses  HOSTNAME/NAMESPACE/NAME
 	 *              	version = "~> 2.0" 
 	 *              }
-	 *           } // registry.terraform.io is the default HOSTNAME and matches our current db.
+	 *           } // registry.tf.io is the default HOSTNAME and matches our current db.
 	 *       
 	 *       }
 	 *       provider "my_http" {

@@ -1,4 +1,4 @@
-package net.terraarch.terraform.schema;
+package net.terraarch.tf.schema;
 
 import net.terraarch.pipe.DataInputBlobReader;
 import net.terraarch.pipe.FieldReferenceOffsetManager;

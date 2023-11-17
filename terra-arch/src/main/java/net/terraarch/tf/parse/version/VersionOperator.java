@@ -1,4 +1,4 @@
-package net.terraarch.terraform.parse.version;
+package net.terraarch.tf.parse.version;
 
 import java.io.Serializable;
 import java.util.Arrays;

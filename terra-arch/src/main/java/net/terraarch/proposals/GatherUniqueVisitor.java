@@ -12,12 +12,12 @@ import org.eclipse.swt.graphics.Image;
 
 import net.terraarch.util.AppendableBuilderReader;
 
-import net.terraarch.terraform.parse.FieldNamesParse;
-import net.terraarch.terraform.structure.GatherProposals;
-import net.terraarch.terraform.structure.GatherProposalsVisitor;
-import net.terraarch.terraform.structure.StructureDataFile;
-import net.terraarch.terraform.structure.walker.GatherInBoundProposals;
-import net.terraarch.terraform.structure.walker.GatherProposalsAdapter;
+import net.terraarch.tf.parse.FieldNamesParse;
+import net.terraarch.tf.structure.GatherProposals;
+import net.terraarch.tf.structure.GatherProposalsVisitor;
+import net.terraarch.tf.structure.StructureDataFile;
+import net.terraarch.tf.structure.walker.GatherInBoundProposals;
+import net.terraarch.tf.structure.walker.GatherProposalsAdapter;
 
 import net.terraarch.TerraArchActivator;
 

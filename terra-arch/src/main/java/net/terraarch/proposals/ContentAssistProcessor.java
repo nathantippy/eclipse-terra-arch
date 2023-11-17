@@ -12,8 +12,8 @@ import org.eclipse.jface.text.contentassist.IContextInformation;
 import org.eclipse.jface.text.contentassist.IContextInformationValidator;
 import org.eclipse.swt.custom.StyledText;
 
-import net.terraarch.terraform.parse.ParseBuffer;
-import net.terraarch.terraform.structure.walker.GatherInBoundProposals;
+import net.terraarch.tf.parse.ParseBuffer;
+import net.terraarch.tf.structure.walker.GatherInBoundProposals;
 
 import net.terraarch.TerraArchActivator;
 import net.terraarch.index.IndexModuleFile;

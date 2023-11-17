@@ -1,4 +1,4 @@
-package net.terraarch.terraform.parse;
+package net.terraarch.tf.parse;
 
 import java.io.File;
 import java.io.InputStream;
@@ -21,8 +21,8 @@ import java.util.function.Consumer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import net.terraarch.terraform.parse.version.VersionConstraint;
-import net.terraarch.terraform.parse.version.VersionConstraints;
+import net.terraarch.tf.parse.version.VersionConstraint;
+import net.terraarch.tf.parse.version.VersionConstraints;
 import net.terraarch.util.AppendableBuilder;
 import net.terraarch.util.AppendableBuilderReader;
 import net.terraarch.util.Appendables;
@@ -1250,7 +1250,7 @@ public class ParseState {
 					}
 				}
 			} else if (3 == blockDepth) {
-				// https://www.terraform.io/upgrade-guides/0-13.html
+				// https://www.tf.io/upgrade-guides/0-13.html
 
 				providerVersionForNextTextLiteral = false;
 

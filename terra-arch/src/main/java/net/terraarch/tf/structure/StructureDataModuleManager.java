@@ -1,8 +1,8 @@
-package net.terraarch.terraform.structure;
+package net.terraarch.tf.structure;
 
 import java.io.File;
 
-import net.terraarch.terraform.parse.ParseBuffer;
+import net.terraarch.tf.parse.ParseBuffer;
 import net.terraarch.util.TrieParser;
 
 

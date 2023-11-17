@@ -1,12 +1,12 @@
-package net.terraarch.terraform.parse.doc;
+package net.terraarch.tf.parse.doc;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import net.terraarch.terraform.parse.version.VersionConstraint;
-import net.terraarch.terraform.parse.version.VersionDTO;
-import net.terraarch.terraform.structure.ModuleFileIndexParse;
-import net.terraarch.terraform.structure.StorageCache;
+import net.terraarch.tf.parse.version.VersionConstraint;
+import net.terraarch.tf.parse.version.VersionDTO;
+import net.terraarch.tf.structure.ModuleFileIndexParse;
+import net.terraarch.tf.structure.StorageCache;
 
 public class ProviderConstraintImpl {
 

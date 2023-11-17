@@ -14,12 +14,12 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.widgets.Display;
 
-import net.terraarch.terraform.parse.BlockType;
-import net.terraarch.terraform.parse.doc.ThemeColors;
-import net.terraarch.terraform.structure.IndexNode;
-import net.terraarch.terraform.structure.IndexNodeDefinition;
-import net.terraarch.terraform.structure.IndexNodeUsage;
-import net.terraarch.terraform.structure.StructureDataModule;
+import net.terraarch.tf.parse.BlockType;
+import net.terraarch.tf.parse.doc.ThemeColors;
+import net.terraarch.tf.structure.IndexNode;
+import net.terraarch.tf.structure.IndexNodeDefinition;
+import net.terraarch.tf.structure.IndexNodeUsage;
+import net.terraarch.tf.structure.StructureDataModule;
 
 import net.terraarch.TerraArchActivator;
 

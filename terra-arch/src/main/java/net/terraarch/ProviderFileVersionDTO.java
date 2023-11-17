@@ -1,6 +1,6 @@
 package net.terraarch;
 
-import net.terraarch.terraform.structure.StructureDataFile;
+import net.terraarch.tf.structure.StructureDataFile;
 
 public class ProviderFileVersionDTO implements Comparable<ProviderFileVersionDTO>{
 

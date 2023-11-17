@@ -1,7 +1,7 @@
 package net.terraarch.refactor.rename;
 
 import net.terraarch.util.AppendableBuilderReader;
-import net.terraarch.terraform.parse.FieldNamesParse;
+import net.terraarch.tf.parse.FieldNamesParse;
 
 public class RenameFieldGatherParse extends FieldNamesParse{
 

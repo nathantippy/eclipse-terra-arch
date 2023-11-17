@@ -1,10 +1,10 @@
-package net.terraarch.terraform.parse;
+package net.terraarch.tf.parse;
 
 import java.util.Arrays;
 
-import net.terraarch.terraform.parse.ParseState.NAMESPACES;
-import net.terraarch.terraform.structure.IndexNodeDefinition;
-import net.terraarch.terraform.structure.StructureDataModule;
+import net.terraarch.tf.parse.ParseState.NAMESPACES;
+import net.terraarch.tf.structure.IndexNodeDefinition;
+import net.terraarch.tf.structure.StructureDataModule;
 import net.terraarch.util.AppendableBuilderReader;
 
 public class TFExpressionReference extends TFExpressionChild {

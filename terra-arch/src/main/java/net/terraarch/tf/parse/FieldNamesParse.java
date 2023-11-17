@@ -1,4 +1,4 @@
-package net.terraarch.terraform.parse;
+package net.terraarch.tf.parse;
 
 import java.util.Arrays;
 

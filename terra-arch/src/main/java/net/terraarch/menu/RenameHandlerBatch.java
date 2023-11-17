@@ -17,9 +17,9 @@ import org.eclipse.ui.handlers.HandlerUtil;
 import org.eclipse.ui.texteditor.IDocumentProvider;
 import org.eclipse.ui.texteditor.ITextEditor;
 
-import net.terraarch.terraform.structure.GatheredFieldType;
-import net.terraarch.terraform.structure.StructureDataModule;
-import net.terraarch.terraform.structure.walker.GatherProposalsAdapterData;
+import net.terraarch.tf.structure.GatheredFieldType;
+import net.terraarch.tf.structure.StructureDataModule;
+import net.terraarch.tf.structure.walker.GatherProposalsAdapterData;
 
 import net.terraarch.index.IndexModuleFile;
 import net.terraarch.refactor.rename.RenameRefactorBatch;

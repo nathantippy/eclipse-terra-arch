@@ -3,7 +3,7 @@ package net.terraarch.refactor.rename;
 import org.eclipse.ltk.core.refactoring.RefactoringStatus;
 import org.eclipse.ltk.ui.refactoring.RefactoringWizard;
 
-import net.terraarch.terraform.structure.walker.GatherSelection;
+import net.terraarch.tf.structure.walker.GatherSelection;
 
 public class RenameWizard extends RefactoringWizard {
 

@@ -1,5 +1,5 @@
 /* XPM */
-static char * C:\Users\david\OneDrive\Documents\GitHub\TerraformPowerEditor\art\deploy\256x256_xpm[] = {
+static char * deploy\256x256_xpm[] = {
 "256 256 168 2",
 "  	c None",
 ". 	c #CE3DFF",

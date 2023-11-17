@@ -1,4 +1,4 @@
-package net.terraarch.terraform.parse.doc;
+package net.terraarch.tf.parse.doc;
 
 public class TypeStyle {
 

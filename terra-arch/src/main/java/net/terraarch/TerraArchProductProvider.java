@@ -6,7 +6,7 @@ import org.eclipse.ui.branding.IProductConstants;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.FrameworkUtil;
 
-import net.terraarch.terraform.parse.ParseState;
+import net.terraarch.tf.parse.ParseState;
 
 import net.terraarch.presentation.TFPresentationDamager;
 

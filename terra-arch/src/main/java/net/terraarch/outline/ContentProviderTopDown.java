@@ -9,10 +9,10 @@ import java.util.function.Consumer;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 
 import net.terraarch.util.Appendables;
-import net.terraarch.terraform.structure.IndexNodeDefinition;
-import net.terraarch.terraform.structure.IndexNodeUsage;
-import net.terraarch.terraform.structure.RecordVisitor;
-import net.terraarch.terraform.structure.StructureDataModule;
+import net.terraarch.tf.structure.IndexNodeDefinition;
+import net.terraarch.tf.structure.IndexNodeUsage;
+import net.terraarch.tf.structure.RecordVisitor;
+import net.terraarch.tf.structure.StructureDataModule;
 
 public class ContentProviderTopDown implements ITreeContentProvider  {
 

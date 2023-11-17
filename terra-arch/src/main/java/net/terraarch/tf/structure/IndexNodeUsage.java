@@ -1,8 +1,8 @@
-package net.terraarch.terraform.structure;
+package net.terraarch.tf.structure;
 
 import java.util.Arrays;
 
-import net.terraarch.terraform.parse.BlockType;
+import net.terraarch.tf.parse.BlockType;
 import net.terraarch.util.AppendableBuilderReader;
 
 public class IndexNodeUsage extends IndexNode implements Comparable<IndexNodeUsage>{

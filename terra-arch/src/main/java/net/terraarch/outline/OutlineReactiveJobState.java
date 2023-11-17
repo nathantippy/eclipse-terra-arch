@@ -8,10 +8,10 @@ import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.SWTException;
 import org.eclipse.swt.widgets.Display;
 
-import net.terraarch.terraform.structure.IndexNode;
-import net.terraarch.terraform.structure.IndexNodeDefinition;
-import net.terraarch.terraform.structure.StructureDataModule;
-import net.terraarch.terraform.structure.StructureDataFile;
+import net.terraarch.tf.structure.IndexNode;
+import net.terraarch.tf.structure.IndexNodeDefinition;
+import net.terraarch.tf.structure.StructureDataModule;
+import net.terraarch.tf.structure.StructureDataFile;
 
 import net.terraarch.index.IndexModuleFile;
 import net.terraarch.util.ReactiveJobState;

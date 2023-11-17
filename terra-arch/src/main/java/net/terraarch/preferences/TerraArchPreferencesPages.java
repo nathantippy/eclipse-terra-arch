@@ -30,20 +30,16 @@ import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.texteditor.ITextEditor;
 
-import net.terraarch.terraform.parse.ParseState;
+import net.terraarch.tf.parse.ParseState;
 import net.terraarch.TerraArchActivator;
 import net.terraarch.util.FileUtils;
-import net.terraarch.terraform.parse.ParseState;
-import net.terraarch.terraform.parse.doc.ThemeColors;
+import net.terraarch.tf.parse.ParseState;
+import net.terraarch.tf.parse.doc.ThemeColors;
 import net.terraarch.TerraArchActivator;
 import net.terraarch.util.BrowserUtils;
 
 public class TerraArchPreferencesPages extends PreferencePage implements IWorkbenchPreferencePage {
 
-	 // TODO: on here we need
-	        //  both update and update-tls urls
-	        //  web page to make donations
-	        //  github to make pull requests
 	
 	private static final ILog logger = Platform.getLog(TerraArchPreferencesPages.class);
 
@@ -229,6 +225,12 @@ public class TerraArchPreferencesPages extends PreferencePage implements IWorkbe
 		          "  For recent updates use  https://terraarch.net/update\n"+
 		          "  For stable updates use  https://terraarch.net/update-lts\n" : "";        
 		          
+
+   	 // TODO: on here we need
+   	        //  both update and update-tls urls
+   	        //  web page to make donations
+   	        //  github to make pull requests
+        
 		feedback.setText(
 		          "\nSend feedback and requests to:  support@terraarch.net       "+
 		          updateMessage

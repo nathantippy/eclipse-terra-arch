@@ -14,14 +14,14 @@ import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.widgets.Display;
 
 
-import net.terraarch.terraform.parse.ParseBuffer;
-import net.terraarch.terraform.parse.doc.DocumentTokenMap;
-import net.terraarch.terraform.parse.doc.ProviderConstraintImpl;
-import net.terraarch.terraform.parse.doc.ThemeColors;
-import net.terraarch.terraform.parse.doc.TokenCollector;
-import net.terraarch.terraform.parse.doc.TokenSelector;
-import net.terraarch.terraform.parse.doc.TypeColors;
-import net.terraarch.terraform.structure.StructureDataModule;
+import net.terraarch.tf.parse.ParseBuffer;
+import net.terraarch.tf.parse.doc.DocumentTokenMap;
+import net.terraarch.tf.parse.doc.ProviderConstraintImpl;
+import net.terraarch.tf.parse.doc.ThemeColors;
+import net.terraarch.tf.parse.doc.TokenCollector;
+import net.terraarch.tf.parse.doc.TokenSelector;
+import net.terraarch.tf.parse.doc.TypeColors;
+import net.terraarch.tf.structure.StructureDataModule;
 
 import net.terraarch.TerraArchActivator;
 import net.terraarch.index.IndexModuleFile;

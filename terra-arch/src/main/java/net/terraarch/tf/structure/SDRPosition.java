@@ -1,4 +1,4 @@
-package net.terraarch.terraform.structure;
+package net.terraarch.tf.structure;
 
 public class SDRPosition {
 

@@ -1,4 +1,4 @@
-package net.terraarch.terraform.model;
+package net.terraarch.tf.model;
 
 import java.util.ArrayList;
 import java.util.List;

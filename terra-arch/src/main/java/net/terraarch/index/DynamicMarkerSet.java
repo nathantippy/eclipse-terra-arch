@@ -17,12 +17,12 @@ import org.eclipse.ui.IMarkerResolutionGenerator;
 
 import net.terraarch.util.AppendableBuilder;
 
-import net.terraarch.terraform.parse.ParseBuffer;
-import net.terraarch.terraform.parse.doc.DocumentTokenMap;
-import net.terraarch.terraform.parse.doc.ProviderConstraintImpl;
-import net.terraarch.terraform.structure.IndexNodeUsage;
-import net.terraarch.terraform.structure.StructureDataFile;
-import net.terraarch.terraform.structure.StructureDataModule;
+import net.terraarch.tf.parse.ParseBuffer;
+import net.terraarch.tf.parse.doc.DocumentTokenMap;
+import net.terraarch.tf.parse.doc.ProviderConstraintImpl;
+import net.terraarch.tf.structure.IndexNodeUsage;
+import net.terraarch.tf.structure.StructureDataFile;
+import net.terraarch.tf.structure.StructureDataModule;
 
 import net.terraarch.TerraArchActivator;
 import net.terraarch.preferences.TerraPreferences;

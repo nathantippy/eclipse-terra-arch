@@ -14,7 +14,7 @@ import org.eclipse.ui.ide.FileStoreEditorInput;
 import org.eclipse.ui.texteditor.AbstractDecoratedTextEditor;
 import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
 
-import net.terraarch.terraform.structure.StructureDataModule;
+import net.terraarch.tf.structure.StructureDataModule;
 
 import net.terraarch.TerraArchActivator;
 import net.terraarch.index.IndexModuleFile;

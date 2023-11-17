@@ -1,4 +1,4 @@
-package net.terraarch.terraform.parse.doc;
+package net.terraarch.tf.parse.doc;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -6,10 +6,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import net.terraarch.terraform.parse.ParseState;
-import net.terraarch.terraform.parse.version.VersionConstraint;
-import net.terraarch.terraform.parse.version.VersionDTO;
-import net.terraarch.terraform.structure.StructureDataModule;
+import net.terraarch.tf.parse.ParseState;
+import net.terraarch.tf.parse.version.VersionConstraint;
+import net.terraarch.tf.parse.version.VersionDTO;
+import net.terraarch.tf.structure.StructureDataModule;
 import net.terraarch.util.AppendableBuilderReader;
 import net.terraarch.util.TrieParser;
 import net.terraarch.util.TrieParserReader;

@@ -6,9 +6,9 @@ import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.widgets.Display;
 
-import net.terraarch.terraform.parse.ParseState;
-import net.terraarch.terraform.parse.doc.TokenCollector;
-import net.terraarch.terraform.parse.doc.TypeColors;
+import net.terraarch.tf.parse.ParseState;
+import net.terraarch.tf.parse.doc.TokenCollector;
+import net.terraarch.tf.parse.doc.TypeColors;
 
 public class TokenProvider {
 
@@ -20,17 +20,17 @@ public class TokenProvider {
 		static {
 			ParseState.reportParseErrors = false; 
 			
-			for(net.terraarch.terraform.parse.doc.TypeColors t : net.terraarch.terraform.parse.doc.TypeColors.values()) {
+			for(net.terraarch.tf.parse.doc.TypeColors t : net.terraarch.tf.parse.doc.TypeColors.values()) {
 				net.terraarch.presentation.TokenProvider.tokens[TEXT_VIVID][t.ordinal()] = new Token(new TextAttribute(new Color(Display.getCurrent(), LocalRGB.get(t)), null, t.style));
 				
 				//System.out.println("Vivid "+t+"  ["+t.color.red+",  "+t.color.green+" , "+t.color.blue+"]");
 				
 			}
 
-			for(net.terraarch.terraform.parse.doc.TypeColors t : net.terraarch.terraform.parse.doc.TypeColors.values()) {
+			for(net.terraarch.tf.parse.doc.TypeColors t : net.terraarch.tf.parse.doc.TypeColors.values()) {
 				int shift = 1;
 				
-				if (t == net.terraarch.terraform.parse.doc.TypeColors.UNDEFINED) {
+				if (t == net.terraarch.tf.parse.doc.TypeColors.UNDEFINED) {
 					net.terraarch.presentation.TokenProvider.tokens[TEXT_MUTED][t.ordinal()] = new Token(new TextAttribute(new Color(Display.getCurrent(), LocalRGB.get(t)), null, t.style));
 			
 				} else {
@@ -46,7 +46,7 @@ public class TokenProvider {
 			
 			int i = net.terraarch.presentation.TokenProvider.rainbowCache[0].length;
 			while (--i>=0) {
-				RGB rgb = computeRainbowColor(i, LocalRGB.get(net.terraarch.terraform.parse.doc.TypeColors.values()[net.terraarch.terraform.parse.doc.TypeColors.RAINBOW_BASE.ordinal()]));
+				RGB rgb = computeRainbowColor(i, LocalRGB.get(net.terraarch.tf.parse.doc.TypeColors.values()[net.terraarch.tf.parse.doc.TypeColors.RAINBOW_BASE.ordinal()]));
 				
 				net.terraarch.presentation.TokenProvider.rainbowCache[TEXT_VIVID][i] = new Token(new TextAttribute(new Color(Display.getCurrent(),rgb)) );
 				net.terraarch.presentation.TokenProvider.rainbowCache[TEXT_MUTED][i] = new Token(new TextAttribute(new Color(Display.getCurrent(),LocalRGB.muteColor(1,rgb))) );

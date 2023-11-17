@@ -23,8 +23,8 @@ import org.eclipse.ui.texteditor.ITextEditor;
 
 import net.terraarch.util.AppendableBuilder;
 
-import net.terraarch.terraform.parse.ParseBuffer;
-import net.terraarch.terraform.structure.StructureDataModule;
+import net.terraarch.tf.parse.ParseBuffer;
+import net.terraarch.tf.structure.StructureDataModule;
 
 import net.terraarch.TerraArchActivator;
 import net.terraarch.util.FileUtils;

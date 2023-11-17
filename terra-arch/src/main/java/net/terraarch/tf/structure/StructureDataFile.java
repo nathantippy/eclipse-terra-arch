@@ -1,4 +1,4 @@
-package net.terraarch.terraform.structure;
+package net.terraarch.tf.structure;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -12,8 +12,8 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import net.terraarch.terraform.parse.BlockType;
-import net.terraarch.terraform.parse.version.VersionConstraint;
+import net.terraarch.tf.parse.BlockType;
+import net.terraarch.tf.parse.version.VersionConstraint;
 import net.terraarch.util.AppendableBuilder;
 import net.terraarch.util.AppendableBuilderReader;
 import net.terraarch.util.TrieParser;

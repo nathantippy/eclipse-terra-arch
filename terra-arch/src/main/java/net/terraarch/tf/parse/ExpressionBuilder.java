@@ -1,6 +1,6 @@
-package net.terraarch.terraform.parse;
+package net.terraarch.tf.parse;
 
-import net.terraarch.terraform.parse.ParseState.NAMESPACES;
+import net.terraarch.tf.parse.ParseState.NAMESPACES;
 import net.terraarch.util.AppendableBuilderReader;
 
 public class ExpressionBuilder {

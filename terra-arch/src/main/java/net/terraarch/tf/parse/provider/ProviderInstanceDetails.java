@@ -1,10 +1,10 @@
-package net.terraarch.terraform.parse.provider;
+package net.terraarch.tf.parse.provider;
 
 import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 
-import net.terraarch.terraform.parse.version.VersionConstraint;
+import net.terraarch.tf.parse.version.VersionConstraint;
 
 public class ProviderInstanceDetails {
 

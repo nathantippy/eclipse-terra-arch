@@ -7,7 +7,7 @@ import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Text;
 
-import net.terraarch.terraform.structure.GatheredFieldType;
+import net.terraarch.tf.structure.GatheredFieldType;
 
 public final class RenameWizardButtonSelection implements SelectionListener {
 	/**

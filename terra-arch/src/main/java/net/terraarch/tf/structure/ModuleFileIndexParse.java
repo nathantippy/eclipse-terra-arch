@@ -1,4 +1,4 @@
-package net.terraarch.terraform.structure;
+package net.terraarch.tf.structure;
 
 import java.util.Arrays;
 import java.util.List;
@@ -6,11 +6,11 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import net.terraarch.terraform.parse.BlockType;
-import net.terraarch.terraform.parse.FieldNamesParse;
-import net.terraarch.terraform.parse.ParseState;
-import net.terraarch.terraform.parse.TFExpression;
-import net.terraarch.terraform.parse.version.VersionConstraint;
+import net.terraarch.tf.parse.BlockType;
+import net.terraarch.tf.parse.FieldNamesParse;
+import net.terraarch.tf.parse.ParseState;
+import net.terraarch.tf.parse.TFExpression;
+import net.terraarch.tf.parse.version.VersionConstraint;
 import net.terraarch.util.AppendableBuilderReader;
 import net.terraarch.util.TrieParserReader;
 
@@ -76,7 +76,7 @@ public class ModuleFileIndexParse extends FieldNamesParse  {
 			module.addProviderVersionConstraints(reader, name, constraints);
 		}
 	}
-	//https://www.terraform.io/docs/configuration/modules.html#providers-within-modules
+	//https://www.tf.io/docs/configuration/modules.html#providers-within-modules
 
 	@Override
 	protected void providerVersionConstraints(String alias, String name, List<VersionConstraint> constraints,

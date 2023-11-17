@@ -14,9 +14,9 @@ import org.eclipse.core.runtime.jobs.Job;
 
 import net.terraarch.util.TrieParserReader;
 import net.terraarch.util.TrieParserVisitor;
-import net.terraarch.terraform.parse.BlockType;
-import net.terraarch.terraform.structure.SDRPosition;
-import net.terraarch.terraform.structure.StructureDataModule;
+import net.terraarch.tf.parse.BlockType;
+import net.terraarch.tf.structure.SDRPosition;
+import net.terraarch.tf.structure.StructureDataModule;
 
 import net.terraarch.index.DynamicMarkerSet;
 import net.terraarch.quickfix.QuickFixerProviderVersion;

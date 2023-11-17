@@ -300,7 +300,7 @@
          <property
                name="aboutText"
                value=               
-                   "Terra Architect, an IDE for Terraform
+                   "Terra Architect, an IDE for TF
                &#xA;See preferences for version and build data.
                &#xA;
                &#xA;(c) Copyright Terra Architect, Eclipse contributors

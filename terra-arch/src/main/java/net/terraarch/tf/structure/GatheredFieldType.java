@@ -1,6 +1,6 @@
-package net.terraarch.terraform.structure;
+package net.terraarch.tf.structure;
 
-import net.terraarch.terraform.parse.BlockType;
+import net.terraarch.tf.parse.BlockType;
 
 //this go across ident positions and do not mach to any other enums.
 public enum GatheredFieldType {

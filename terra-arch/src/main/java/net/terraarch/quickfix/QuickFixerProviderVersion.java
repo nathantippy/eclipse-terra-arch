@@ -19,8 +19,8 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.texteditor.IDocumentProvider;
 
-import net.terraarch.terraform.structure.StorageCache;
-import net.terraarch.terraform.structure.StructureDataModule;
+import net.terraarch.tf.structure.StorageCache;
+import net.terraarch.tf.structure.StructureDataModule;
 
 import net.terraarch.TerraArchActivator;
 import net.terraarch.index.IndexModuleFile;

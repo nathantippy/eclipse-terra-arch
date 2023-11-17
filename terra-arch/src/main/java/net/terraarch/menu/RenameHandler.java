@@ -16,11 +16,11 @@ import org.eclipse.ui.texteditor.IDocumentProvider;
 import org.eclipse.ui.texteditor.ITextEditor;
 
 
-import net.terraarch.terraform.parse.ParseBuffer;
-import net.terraarch.terraform.structure.GatheredFieldType;
-import net.terraarch.terraform.structure.StructureDataModule;
-import net.terraarch.terraform.structure.walker.GatherInBoundProposals;
-import net.terraarch.terraform.structure.walker.GatherSelection;
+import net.terraarch.tf.parse.ParseBuffer;
+import net.terraarch.tf.structure.GatheredFieldType;
+import net.terraarch.tf.structure.StructureDataModule;
+import net.terraarch.tf.structure.walker.GatherInBoundProposals;
+import net.terraarch.tf.structure.walker.GatherSelection;
 
 import net.terraarch.TerraArchActivator;
 import net.terraarch.index.IndexModuleFile;

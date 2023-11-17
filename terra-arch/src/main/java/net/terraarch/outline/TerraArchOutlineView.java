@@ -36,8 +36,8 @@ import org.eclipse.ui.texteditor.AbstractDecoratedTextEditor;
 import org.eclipse.ui.texteditor.IDocumentProvider;
 import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
 
-import net.terraarch.terraform.parse.BlockType;
-import net.terraarch.terraform.structure.StructureDataModule;
+import net.terraarch.tf.parse.BlockType;
+import net.terraarch.tf.structure.StructureDataModule;
 
 import net.terraarch.TerraArchActivator;
 import net.terraarch.index.IndexModuleFile;

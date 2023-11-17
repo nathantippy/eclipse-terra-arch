@@ -1,12 +1,12 @@
-package net.terraarch.terraform.structure.walker;
+package net.terraarch.tf.structure.walker;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import net.terraarch.terraform.structure.GatherProposals;
-import net.terraarch.terraform.structure.GatherProposalsVisitor;
-import net.terraarch.terraform.structure.GatheredFieldType;
-import net.terraarch.terraform.structure.StructureDataFile;
+import net.terraarch.tf.structure.GatherProposals;
+import net.terraarch.tf.structure.GatherProposalsVisitor;
+import net.terraarch.tf.structure.GatheredFieldType;
+import net.terraarch.tf.structure.StructureDataFile;
 import net.terraarch.util.AppendableBuilderReader;
 
 public abstract class GatherProposalsAdapter implements GatherProposalsVisitor {

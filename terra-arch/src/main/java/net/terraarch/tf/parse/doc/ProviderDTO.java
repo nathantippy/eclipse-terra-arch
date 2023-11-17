@@ -1,9 +1,9 @@
-package net.terraarch.terraform.parse.doc;
+package net.terraarch.tf.parse.doc;
 
 import java.io.Serializable;
 import java.util.List;
 
-import net.terraarch.terraform.parse.version.VersionConstraint;
+import net.terraarch.tf.parse.version.VersionConstraint;
 
 public class ProviderDTO implements Serializable {
 

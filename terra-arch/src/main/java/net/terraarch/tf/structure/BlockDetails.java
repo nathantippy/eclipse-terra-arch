@@ -1,4 +1,4 @@
-package net.terraarch.terraform.structure;
+package net.terraarch.tf.structure;
 
 import java.io.Serializable;
 import java.util.ArrayList;

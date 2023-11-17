@@ -1,6 +1,6 @@
-package net.terraarch.terraform.structure;
+package net.terraarch.tf.structure;
 
-import net.terraarch.terraform.parse.FieldNamesParse;
+import net.terraarch.tf.parse.FieldNamesParse;
 
 public abstract class GatherProposals<T extends GatherProposalsVisitor> extends FieldNamesParse {
 

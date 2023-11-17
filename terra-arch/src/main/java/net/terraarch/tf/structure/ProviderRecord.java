@@ -1,6 +1,6 @@
-package net.terraarch.terraform.structure;
+package net.terraarch.tf.structure;
 
-import net.terraarch.terraform.parse.version.VersionDTO;
+import net.terraarch.tf.parse.version.VersionDTO;
 
 public class ProviderRecord {
 

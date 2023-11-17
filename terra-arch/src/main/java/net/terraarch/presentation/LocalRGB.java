@@ -4,7 +4,7 @@ import java.util.EnumMap;
 
 import org.eclipse.swt.graphics.RGB;
 
-import net.terraarch.terraform.parse.doc.TypeColors;
+import net.terraarch.tf.parse.doc.TypeColors;
 
 public class LocalRGB {
 

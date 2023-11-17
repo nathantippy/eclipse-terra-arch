@@ -21,9 +21,9 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
-import net.terraarch.terraform.structure.GatheredFieldType;
-import net.terraarch.terraform.structure.walker.GatherProposalsAdapterData;
-import net.terraarch.terraform.structure.walker.GatherSelection;
+import net.terraarch.tf.structure.GatheredFieldType;
+import net.terraarch.tf.structure.walker.GatherProposalsAdapterData;
+import net.terraarch.tf.structure.walker.GatherSelection;
 
 public class RenameWizardPageBatch extends UserInputWizardPage {
 

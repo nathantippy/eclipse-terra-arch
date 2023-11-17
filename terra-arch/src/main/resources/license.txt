@@ -6,7 +6,7 @@ IMPORTANT! THIS IS A LEGALLY BINDING AGREEMENT BETWEEN YOU AND KMF ENTERPRISES, 
 
 1. DEFINITIONS
 1.1 ”Terra Architect” - KMF Enterprises' Proprietary Terra Architectect editing tool which is hosted as a plugin within the Eclipse framework, and any accompanying processes and documentation excluding the Eclipse framework and associated open source components.
-1.2 “KMF Enterprise’s Proprietary Software” - All of Terra Architect’s source and binary code found in the namespaces of net.terraarch.**, net.terraarch.terraform.** including all content within the accumulator-*.jar files.
+1.2 “KMF Enterprise’s Proprietary Software” - All of Terra Architect’s source and binary code found in the namespaces of net.terraarch.**, net.terraarch.tf.** including all content within the accumulator-*.jar files.
 1.2 ”Subscription” - one or more subscription(s) to Terra Architect identified on an order form.
 1.3 ”Activation Date” - the date on which Customer is provided access to the software via download and/or Subscription.
 1.4 “Customer” - the individual or company who subscribes to Terra Architect and is responsible for payment.

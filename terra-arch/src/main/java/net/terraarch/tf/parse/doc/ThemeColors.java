@@ -1,4 +1,4 @@
-package net.terraarch.terraform.parse.doc;
+package net.terraarch.tf.parse.doc;
 
 public enum ThemeColors { //NOTE: do not change order, ordinal position is used.
 	vivid("Best for dark themes"),
