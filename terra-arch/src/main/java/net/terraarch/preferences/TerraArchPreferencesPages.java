@@ -110,7 +110,6 @@ public class TerraArchPreferencesPages extends PreferencePage implements IWorkbe
 
 	@Override
 	protected Control createContents(Composite parent) {
-	
 		
 	    Composite sourceControlGroup = new Composite(parent, SWT.NONE);
 				
@@ -128,48 +127,6 @@ public class TerraArchPreferencesPages extends PreferencePage implements IWorkbe
 	}
 	
 	public final static String[] buttonTexts = new String[] { "Donate at https://TerraArch.net", "Subscribe later"};
-
-	
-	private boolean licenseKeyFields(Composite sourceControlGroup, boolean isTrial) {
-		Group titleGroup = new Group(sourceControlGroup, SWT.NONE);
-        titleGroup.setLayout(new GridLayout(1, false));
-        titleGroup.setText("");
-        
-
-			
-			Label label = new Label(titleGroup, SWT.NONE);
-			String customeEditionMessage = ""; //if the demo key is still used then add this comment
-			
-			Button puchaseButton = new Button(titleGroup, SWT.NONE);
-			puchaseButton.setText("visit site");
-			puchaseButton.setToolTipText("click here to launch browser and support");
-			puchaseButton.addSelectionListener(new SelectionListener() {
-				@Override
-				public void widgetDefaultSelected(SelectionEvent arg0) {
-				}
-				@Override
-				public void widgetSelected(SelectionEvent arg0) {
-					BrowserUtils.launchURL("https://TerraArch.net");
-				}
-			}
-			);
-			label.setText(customeEditionMessage+"\n");
-		
-		
-		boolean isValid = true;
-		
-		return isValid;
-	}
-
-	private void addLabel(Group titleGroup, String label, String value, String suffix) {
-		if (null!=value && value.trim().length()>0) {
-	
-		   Label text = new Label(titleGroup, SWT.NONE); 
-		   text.setText(label+value+suffix);
-		
-		}
-	}
-
 	
 	private boolean textColorFields(Composite sourceControlGroup) {
 		
@@ -191,7 +148,7 @@ public class TerraArchPreferencesPages extends PreferencePage implements IWorkbe
         }         
 
         colorRadioToDefault();         
-        
+ 
         boolean isValid = true;
 		titleGroup.setEnabled(isValid);
 		return isValid;
@@ -206,36 +163,50 @@ public class TerraArchPreferencesPages extends PreferencePage implements IWorkbe
 			textColorButtons[i].setSelection(textColors == values[i]);   
         }
 	}
-	
+
 	
 	private void versionBuildFields(Composite sourceControlGroup, boolean isSubscriber) {
 		Group titleGroup = new Group(sourceControlGroup, SWT.NONE);
         titleGroup.setLayout(new RowLayout(SWT.VERTICAL));
-        titleGroup.setText("Build");
-    	Label buildDetails = new Label(titleGroup, SWT.NONE);
-        buildDetails.setText(
-        		          "\nMade in USA of U.S. and open source components.");
-        		          //https://www.ftc.gov/tips-advice/business-center/guidance/complying-made-usa-standard
-	
+        titleGroup.setText("Information");
         
+	        
        	Label feedback = new Label(titleGroup, SWT.NONE);
-                
-        String updateMessage = isSubscriber ? "\n"+
-		          "Optional URLs for available software site:\n"+
-		          "  For recent updates use  https://terraarch.net/update\n"+
-		          "  For stable updates use  https://terraarch.net/update-lts\n" : "";        
-		          
-
-   	 // TODO: on here we need
-   	        //  both update and update-tls urls
-   	        //  web page to make donations
-   	        //  github to make pull requests
-        
 		feedback.setText(
-		          "\nSend feedback and requests to:  support@terraarch.net       "+
-		          updateMessage
+	             "\nFor new updates use: https://terraarch.net/update     \n"
         );
-		feedback.setCapture(true);
+		
+		Button issuesButton = new Button(titleGroup, SWT.NONE);
+		issuesButton.setText("   report issues on github   ");
+		issuesButton.setToolTipText("click here to launch browser and report an issue.");
+		issuesButton.addSelectionListener(new SelectionListener() {
+			@Override
+			public void widgetDefaultSelected(SelectionEvent arg0) {
+			}
+			@Override
+			public void widgetSelected(SelectionEvent arg0) {
+				BrowserUtils.launchURL("https://github.com/nathantippy/eclipse-terra-arch/issues");
+			}
+		});
+		
+	
+		Button supportButton = new Button(titleGroup, SWT.NONE);
+		supportButton.setText("   donate here   ");
+		supportButton.setToolTipText("click here to launch browser and support us.");
+		supportButton.addSelectionListener(new SelectionListener() {
+			@Override
+			public void widgetDefaultSelected(SelectionEvent arg0) {
+			}
+			@Override
+			public void widgetSelected(SelectionEvent arg0) {
+				BrowserUtils.launchURL("https://TerraArch.net/donate.html");
+			}
+		});
+		
+    	Label buildDetails = new Label(titleGroup, SWT.NONE);
+        buildDetails.setText("\nMade in USA of U.S. and open source components.");
+        //https://www.ftc.gov/tips-advice/business-center/guidance/complying-made-usa-standard
+				
 	}
 
 	public static  void invalidateAllTextInAllEditors() {
@@ -260,10 +231,5 @@ public class TerraArchPreferencesPages extends PreferencePage implements IWorkbe
 			logger.error("invalidateAllTextInAllEditors",t);
 		}
 	}
-
-	
-	public static final TerraPreferences instance = new TerraPreferences();
-
-	
 	
 }
