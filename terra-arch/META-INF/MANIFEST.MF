@@ -2,9 +2,10 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Terra Architect
 Bundle-SymbolicName: net.TerraArch.editor;singleton:=true
-Bundle-Version: 1.1.0
+Bundle-Version: 1.1.21.qualifier
 Bundle-Activator: net.terraarch.TerraArchActivator
 Bundle-Vendor: Nathan Tippy
+Bundle-RequiredExecutionEnvironment: JavaSE-21
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.core.resources,
@@ -34,7 +35,6 @@ Require-Bundle: org.eclipse.ui,
  org.slf4j.api
 Automatic-Module-Name: net.TerraArch.editor
 Bundle-ClassPath: editor.jar
-Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
 
 

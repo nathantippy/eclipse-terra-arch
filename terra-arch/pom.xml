@@ -5,15 +5,15 @@
   <parent>
     <artifactId>terra-architect</artifactId>
     <groupId>net.terraarch</groupId>
-    <version>1.1.0</version>
+    <version>1.1.21-SNAPSHOT</version>
   </parent>
 
   <!-- Properties section to define common variables for the build -->
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.target>11</maven.compiler.target>
-    <maven.compiler.source>11</maven.compiler.source>
-    <tycho.version>2.4.0</tycho.version>
+    <maven.compiler.target>21</maven.compiler.target>
+    <maven.compiler.source>21</maven.compiler.source>
+    <tycho.version>3.0.3</tycho.version>
   </properties>
 
   <!-- Maven version prerequisite -->
@@ -98,21 +98,6 @@
         </configuration>
       </plugin>
 
-      <!-- Tycho Source Feature Plugin: Packages the source code of Eclipse plugins and features as a separate source feature -->
-      <plugin>
-        <groupId>org.eclipse.tycho.extras</groupId>
-        <artifactId>tycho-source-feature-plugin</artifactId>
-        <version>${tycho.version}</version>
-        <executions>
-          <execution>
-            <id>source-feature</id>
-            <phase>package</phase>
-            <goals>
-              <goal>source-feature</goal>
-            </goals>
-          </execution>
-        </executions>
-          </plugin>
 
 	  <!-- Tycho P2 Plugin: Generates P2 metadata for the built artifacts, allowing integration with the Eclipse update system -->
 	  <plugin>

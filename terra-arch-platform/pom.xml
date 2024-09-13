@@ -5,13 +5,13 @@
 
   <groupId>net.terraarch</groupId>
   <artifactId>terra-arch-platform</artifactId>
-  <version>1.1.0</version>
+  <version>1.1.21-SNAPSHOT</version>
   <packaging>eclipse-target-definition</packaging>
 
   <parent>
   	<artifactId>terra-architect</artifactId>
   	<groupId>net.terraarch</groupId>
-    <version>1.1.0</version>
+    <version>1.1.21-SNAPSHOT</version>
   </parent>
   
   <build>
@@ -25,7 +25,7 @@
 						<artifact>
 							<groupId>net.terraarch</groupId>							
 							<artifactId>terra-arch-platform</artifactId>
-							<version>1.1.0</version>
+							<version>1.1.21-SNAPSHOT</version>
 						</artifact>						
 					</target>
 				</configuration>

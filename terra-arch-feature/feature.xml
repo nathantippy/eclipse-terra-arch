@@ -2,7 +2,7 @@
 <feature
       id="net.TerraArch"
       label="Terra Architect"
-      version="1.1.0"
+      version="1.1.21.qualifier"
       provider-name="KMF">
 
    <url>
@@ -13,6 +13,6 @@
          id="net.TerraArch.editor"
          download-size="10000"
          install-size="200000"
-         version="1.1.0"/>
+         version="1.1.21.qualifier"/>
 
 </feature>
