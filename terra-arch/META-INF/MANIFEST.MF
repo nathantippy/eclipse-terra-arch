@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Terra Architect
 Bundle-SymbolicName: net.TerraArch.editor;singleton:=true
-Bundle-Version: 1.1.21.qualifier
+Bundle-Version: 1.1.21
 Bundle-Activator: net.terraarch.TerraArchActivator
 Bundle-Vendor: Nathan Tippy
 Bundle-RequiredExecutionEnvironment: JavaSE-21

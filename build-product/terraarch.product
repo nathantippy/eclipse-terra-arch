@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="Terra Architect" uid="terraarch" id="net.TerraArch.editor.terraarch" application="org.eclipse.ui.ide.workbench" version="1.1.21.qualifier" useFeatures="false" includeLaunchers="true" autoIncludeRequirements="true">
+<product name="Terra Architect" uid="terraarch" id="net.TerraArch.editor.terraarch" application="org.eclipse.ui.ide.workbench" version="1.1.21" useFeatures="false" includeLaunchers="true" autoIncludeRequirements="true">
 
    <configIni use="default">
    </configIni>

@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>net.terraarch</groupId>
   <artifactId>terra-architect</artifactId>
-  <version>1.1.21-SNAPSHOT</version>
+  <version>1.1.21</version>
   <packaging>pom</packaging>
    
    <!-- Maven version prerequisite -->

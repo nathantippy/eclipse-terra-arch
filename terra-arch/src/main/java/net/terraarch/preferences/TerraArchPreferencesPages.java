@@ -126,7 +126,7 @@ public class TerraArchPreferencesPages extends PreferencePage implements IWorkbe
 		return sourceControlGroup;
 	}
 	
-	public final static String[] buttonTexts = new String[] { "Donate at https://TerraArch.net", "Subscribe later"};
+	//public final static String[] buttonTexts = new String[] { "Donate at https://TerraArch.net", "Subscribe later"};
 	
 	private boolean textColorFields(Composite sourceControlGroup) {
 		
@@ -199,7 +199,7 @@ public class TerraArchPreferencesPages extends PreferencePage implements IWorkbe
 			}
 			@Override
 			public void widgetSelected(SelectionEvent arg0) {
-				BrowserUtils.launchURL("https://TerraArch.net/donate.html");
+				BrowserUtils.launchURL("https://github.com/sponsors/kmf-lab");
 			}
 		});
 		
