@@ -1,120 +1,67 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <artifactId>net.TerraArch.editor</artifactId>
-  <packaging>eclipse-plugin</packaging>
-  <parent>
-    <artifactId>terra-architect</artifactId>
-    <groupId>net.terraarch</groupId>
-    <version>1.1.21</version>
-  </parent>
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>net.TerraArch.editor</artifactId>
+    <packaging>eclipse-plugin</packaging>
+    <parent>
+        <artifactId>terra-architect</artifactId>
+        <groupId>net.terraarch</groupId>
+        <version>1.1.22</version>
+    </parent>
 
-  <!-- Properties section to define common variables for the build -->
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.target>21</maven.compiler.target>
-    <maven.compiler.source>21</maven.compiler.source>
-    <tycho.version>3.0.3</tycho.version>
-  </properties>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
 
-  <!-- Maven version prerequisite -->
-  <prerequisites>
-    <maven>3.0</maven>
-  </prerequisites>
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.36</version>
+        </dependency>
+    </dependencies>
 
-  <!-- Dependencies -->
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.12</version>
-      <type>jar</type>
-      <scope>test</scope>
-      <optional>false</optional>
-    </dependency>
-    
-    
-    
-  </dependencies>
-  
-  <!-- required only for Java editing -->
-    <repositories>
-
-                        
-        <repository>
-            <id>2022-06</id>
-            <layout>p2</layout>
-            <url>http://download.eclipse.org/releases/2022-06/</url>
-        </repository>
-        <repository>
-            <id>2022-06-orbit-drops</id>
-            <layout>p2</layout>
-            <url>https://download.eclipse.org/tools/orbit/downloads/drops/R20220531185310/repository</url>
-        </repository>
-        
-    </repositories>
-
-
-  <build>
-    <sourceDirectory>src/main/java</sourceDirectory>
-
-    <plugins>
-		<!-- required for java editing --> 
-		 <plugin>
-	      <groupId>org.eclipse.tycho</groupId>
-	      <artifactId>tycho-maven-plugin</artifactId>
-	      <version>${tycho.version}</version>
-	      <extensions>true</extensions>
-	    </plugin>
-      <!-- Maven Compiler Plugin: Compiles the Java source code -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.0</version>
-        <configuration>
-          <source>11</source>
-          <target>11</target>
-          <release>11</release>
-        </configuration>
-      </plugin>
-
-      <!-- Tycho Maven Plugin: Enables Tycho build extension for building Eclipse plugins, features, and RCP applications -->
-      <plugin>
-        <groupId>org.eclipse.tycho</groupId>
-        <artifactId>tycho-maven-plugin</artifactId>
-        <version>${tycho.version}</version>
-        <extensions>true</extensions>
-      </plugin>
-
-      <!-- Tycho Compiler Plugin: Compiles the Java source code for Eclipse plugins using the Eclipse compiler -->
-      <plugin>
-        <groupId>org.eclipse.tycho</groupId>
-        <artifactId>tycho-compiler-plugin</artifactId>
-        <version>${tycho.version}</version>
-        <configuration>
-          <useProjectSettings>false</useProjectSettings>
-          <compilerVersion>11</compilerVersion>
-          <source>11</source>
-          <target>11</target>
-        </configuration>
-      </plugin>
-
-
-	  <!-- Tycho P2 Plugin: Generates P2 metadata for the built artifacts, allowing integration with the Eclipse update system -->
-	  <plugin>
-	    <groupId>org.eclipse.tycho</groupId>
-	    <artifactId>tycho-p2-plugin</artifactId>
-	    <version>${tycho.version}</version>
-	    <executions>
-	      <execution>
-	        <id>attach-p2-metadata</id>
-	        <phase>package</phase>
-	        <goals>
-	          <goal>p2-metadata</goal>
-	        </goals>
-	      </execution>
-	    </executions>
-	  </plugin>
-
-</plugins>
-  </build>
+    <build>
+        <sourceDirectory>src/main/java</sourceDirectory>
+        <plugins>
+            <plugin>
+                <groupId>org.eclipse.tycho</groupId>
+                <artifactId>tycho-compiler-plugin</artifactId>
+                <version>4.0.4</version>
+                <configuration>
+                    <source>17</source>
+                    <target>17</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.eclipse.tycho</groupId>
+                <artifactId>tycho-p2-plugin</artifactId>
+                <version>4.0.4</version>
+                <executions>
+                    <execution>
+                        <id>attach-p2-metadata</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>p2-metadata</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.eclipse.tycho</groupId>
+                <artifactId>target-platform-configuration</artifactId>
+                <version>4.0.4</version>
+                <configuration>
+                    <pomDependencies>wrapAsBundle</pomDependencies>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

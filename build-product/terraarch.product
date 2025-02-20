@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
-
-<product name="Terra Architect" uid="terraarch" id="net.TerraArch.editor.terraarch" application="org.eclipse.ui.ide.workbench" version="1.1.21" useFeatures="false" includeLaunchers="true" autoIncludeRequirements="true">
+<product name="Terra Architect" uid="terraarch" id="net.TerraArch.editor.terraarch" application="org.eclipse.ui.ide.workbench" version="1.1.22" useFeatures="false" includeLaunchers="true" autoIncludeRequirements="true">
 
    <configIni use="default">
    </configIni>
 
    <launcherArgs>
-      <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts
-      </vmArgsMac>
+      <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts</vmArgsMac>
    </launcherArgs>
 
    <windowImages i16="terra-arch/images/16x16.png" i32="terra-arch/images/32x32.png" i48="terra-arch/images/48x48.png" i64="terra-arch/images/64x64.png" i128="terra-arch/images/128x128.png" i256="terra-arch/images/256x256.png"/>
@@ -36,11 +34,10 @@
       <plugin id="com.google.guava"/>
       <plugin id="com.ibm.icu"/>
       <plugin id="com.jcraft.jsch"/>
-      <plugin id="javaewah"/>
+      <plugin id="com.googlecode.javaewah.JavaEWAH"/> <!-- Corrected from javaewah -->
       <plugin id="javax.annotation"/>
       <plugin id="javax.inject"/>
       <plugin id="javax.xml"/>
-      <plugin id="javax.xml.stream"/>
       <plugin id="net.TerraArch.editor"/>
       <plugin id="net.i2p.crypto.eddsa"/>
       <plugin id="org.apache.ant"/>
@@ -67,7 +64,7 @@
       <plugin id="org.apache.xml.resolver"/>
       <plugin id="org.apache.xml.serializer"/>
       <plugin id="org.apache.xmlgraphics"/>
-      <plugin id="org.assertj"/>
+      <!-- Removed org.assertj (not an OSGi bundle in Orbit) -->
       <plugin id="org.bouncycastle.bcpg"/>
       <plugin id="org.bouncycastle.bcprov"/>
       <plugin id="org.eclipse.compare"/>
@@ -259,27 +256,23 @@
       <plugin id="org.sat4j.pb"/>
       <plugin id="org.slf4j.api"/>
       <plugin id="org.tukaani.xz"/>
-      <plugin id="org.w3c.css.sac"/>
-      <plugin id="org.w3c.dom.events"/>
-      <plugin id="org.w3c.dom.smil"/>
-      <plugin id="org.w3c.dom.svg"/>
    </plugins>
 
    <configurations>
-      <plugin id="org.apache.felix.scr" autoStart="true" startLevel="2" />
-      <plugin id="org.eclipse.core.runtime" autoStart="true" startLevel="4" />
-      <plugin id="org.eclipse.equinox.common" autoStart="true" startLevel="2" />
-      <plugin id="org.eclipse.equinox.event" autoStart="true" startLevel="2" />
-      <plugin id="org.eclipse.equinox.p2.updatechecker" autoStart="true" startLevel="0" />
-      <plugin id="org.eclipse.equinox.p2.updatesite" autoStart="true" startLevel="0" />
-      <plugin id="org.eclipse.equinox.simpleconfigurator" autoStart="true" startLevel="1" />
-      <plugin id="org.eclipse.update.configurator" autoStart="true" startLevel="0" />
-      <property name="cssTheme" value="org.eclipse.e4.ui.css.theme.e4_dark" />
-      <property name="perspective" value="net.terraarch.perspective" />
+      <plugin id="org.apache.felix.scr" autoStart="true" startLevel="2"/>
+      <plugin id="org.eclipse.core.runtime" autoStart="true" startLevel="4"/>
+      <plugin id="org.eclipse.equinox.common" autoStart="true" startLevel="2"/>
+      <plugin id="org.eclipse.equinox.event" autoStart="true" startLevel="2"/>
+      <plugin id="org.eclipse.equinox.p2.updatechecker" autoStart="true" startLevel="0"/>
+      <plugin id="org.eclipse.equinox.p2.updatesite" autoStart="true" startLevel="0"/>
+      <plugin id="org.eclipse.equinox.simpleconfigurator" autoStart="true" startLevel="1"/>
+      <plugin id="org.eclipse.update.configurator" autoStart="true" startLevel="0"/>
+      <property name="cssTheme" value="org.eclipse.e4.ui.css.theme.e4_dark"/>
+      <property name="perspective" value="net.terraarch.perspective"/>
    </configurations>
 
    <repositories>
-      <repository location="https://terraarch.net/update" enabled="true" />
+      <repository location="https://terraarch.net/update" enabled="true"/>
    </repositories>
 
    <preferencesInfo>
