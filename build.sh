@@ -9,4 +9,5 @@
 
 mvn install
 
+# go up one folder to keystore-ta-build.sh
 

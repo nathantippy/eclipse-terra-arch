@@ -16,10 +16,19 @@
         <ws>gtk</ws>
         <arch>x86_64</arch>
     </environment>
-    <targetJRE path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-17"/>
+    <targetJRE path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-21"/>
     <locations>
-        <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
-            <repository location="http://download.eclipse.org/releases/2024-12/"/>
+        <location includeAllPlatforms="true" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+            <!-- Eclipse 2025-03 Release (base) -->
+            <repository location="https://download.eclipse.org/releases/2025-03/"/>
+            <!-- Eclipse 2025-03 EPP (packages like SDK) -->
+            <repository location="https://download.eclipse.org/technology/epp/packages/2025-03/"/>
+            
+            <repository location="https://download.eclipse.org/releases/2025-09/"/>
+            <repository location="https://download.eclipse.org/tools/orbit/simrel/orbit-aggregation/" />
+            <repository location="https://download.eclipse.org/rt/ecf/3.16.4/site.p2/" />
+            <repository location="https://download.eclipse.org/tools/orbit/simrel/maven-osgi/2025-09/" />
+            
             <unit id="org.eclipse.collections.feature.source.feature.group" version="0.0.0"/>
             <unit id="org.eclipse.emf.cdo.sdk.feature.group" version="0.0.0"/>
             <unit id="org.eclipse.fx.runtime.min.feature.feature.group" version="0.0.0"/>
@@ -124,18 +133,7 @@
             <unit id="org.eclipse.ui.workbench" version="0.0.0"/>
             <unit id="org.eclipse.ui.workbench.texteditor" version="0.0.0"/>
             <unit id="org.junit" version="0.0.0"/>
-        </location>
-        <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
-            <repository location="https://download.eclipse.org/tools/orbit/downloads/drops/R20230531010532/repository/"/>
-            <unit id="com.googlecode.javaewah.JavaEWAH" version="0.0.0"/>
-            <unit id="javax.annotation" version="0.0.0"/>
-            <unit id="javax.inject" version="0.0.0"/>
-            <unit id="javax.xml" version="0.0.0"/>
-            <unit id="org.apache.commons.compress" version="0.0.0"/>
-            <unit id="org.apache.lucene.analyzers-common" version="0.0.0"/>
-            <unit id="org.apache.lucene.analyzers-smartcn" version="0.0.0"/>
-            <unit id="org.bouncycastle.bcpg" version="0.0.0"/>
-            <unit id="org.bouncycastle.bcprov" version="0.0.0"/>
+            <unit id="org.apache.xmlgraphics" version="2.11.0.v20250506-1400"/>
         </location>
     </locations>
 </target>

@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>net.terraarch</groupId>
     <artifactId>terra-architect</artifactId>
-    <version>1.1.22</version>
+    <version>1.1.23</version>
     <packaging>pom</packaging>
 
     <!-- Maven version prerequisite (updated to 3.9.0 for Tycho 4.0.4 compatibility) -->
@@ -15,9 +15,9 @@
     <!-- Repositories for dependencies -->
     <repositories>
         <repository>
-            <id>2024-12</id>
+            <id>2025-09</id>
             <layout>p2</layout>
-            <url>https://download.eclipse.org/releases/2024-12/</url>
+            <url>https://download.eclipse.org/releases/2025-09/</url>
         </repository>
         <repository>
             <id>orbit-drops</id>
@@ -37,8 +37,8 @@
         <!--
             HOW TO UPDATE THE VERSION:
             
-            mvn org.eclipse.tycho:tycho-versions-plugin:set-version -DnewVersion=1.1.0-SNAPSHOT
-            mvn org.eclipse.tycho:tycho-versions-plugin:set-version -DnewVersion=1.1.0
+            mvn org.eclipse.tycho:tycho-versions-plugin:set-version -DnewVersion=1.1.23-SNAPSHOT
+            mvn org.eclipse.tycho:tycho-versions-plugin:set-version -DnewVersion=1.1.23
        -->            
 
     

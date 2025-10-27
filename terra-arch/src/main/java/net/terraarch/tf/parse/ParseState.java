@@ -160,7 +160,7 @@ public class ParseState {
 //	}
 
 
-	public static enum FUNCTIONS implements LiteralTerm {  // checked against 1.5.x
+	public static enum FUNCTIONS implements LiteralTerm {  // checked against 1.5.x + tofo
 
 		// numeric
 		ABS("abs"), CEIL("ceil"), FLOOR("floor"), LOG("log"), MAX("max"), MIN("min"), PARSEINT("parseint"), POW("pow"), SIGNUM("signum"), 
@@ -169,6 +169,7 @@ public class ParseState {
 		REGEX("regex"), REGEXALL("regexall"), REPLACE("replace"), SPLIT("split"), STARTSWITH("startswith"), STRCONTAINS("strcontains"),
 		STRREV("strrev"), SUBSTR("substr"), TITLE("title"), TRIM("trim"), TRIMPREFIX("trimprefix"), TRIMSUFFIX("trimsuffix"), TRIMSPACE("trimspace"),
 		UPPER("upper"),
+		ALLTRIMS("alltrims"),
 		// collection
 		ALLTRUE("alltrue"),ANYTRUE("anytrue"),CHUNKLIST("chunklist"), COALESCE("coalesce"), COALESCELIST("coalescelist"), COMPACT("compact"),
 		CONCAT("concat"), CONTAINS("contains"), DISTINCT("distinct"), ELEMENT("element"), FLATTEN("flatten"),
@@ -177,6 +178,7 @@ public class ParseState {
 		MATCHKEYS("matchkeys"), MERGE("merge"), ONE("one"), RANGE("range"), REVERSE("reverse"), SETINTERSECTION("setintersection"), SETPRODUCT("setproduct"),
 		SETSUBTRACT("setsubtract"), SETUNION("setunion"), SLICE("slice"), SORT("sort"), SUM("sum"), TRANSPOSE("transpose"), VALUES("values"),
 		ZIPMAP("zipmap"),
+		DEFAULTS("defaults"),
 		// encoding
 		BASE64DECODE("base64decode"), BASE64ENCODE("base64encode"), BASE64GZIP("base64gzip"), CSVDECODE("csvdecode"),
 		JSONDECODE("jsondecode"), JSONENCODE("jsonencode"), TEXTDECODEBASE64("textdcodebase64"), TEXTENCODEBASE64("textencodebase64"),
@@ -205,7 +207,7 @@ public class ParseState {
 			return value;
 		}
 
-		FUNCTIONS(String value) { // TODO: update with return type, input args and compute method
+		FUNCTIONS(String value) { 
 			this.value = value;
 		}
 	}

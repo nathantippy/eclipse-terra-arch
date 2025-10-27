@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
-<product name="Terra Architect" uid="terraarch" id="net.TerraArch.editor.terraarch" application="org.eclipse.ui.ide.workbench" version="1.1.22" useFeatures="false" includeLaunchers="true" autoIncludeRequirements="true">
+<product name="Terra Architect" uid="terraarch" id="net.TerraArch.editor.terraarch" application="org.eclipse.ui.ide.workbench" version="1.1.23" useFeatures="false" includeLaunchers="true" autoIncludeRequirements="true">
 
    <configIni use="default">
    </configIni>
@@ -48,7 +48,6 @@
       <plugin id="org.apache.commons.codec"/>
       <plugin id="org.apache.commons.compress"/>
       <plugin id="org.apache.commons.io"/>
-      <plugin id="org.apache.commons.jxpath"/>
       <plugin id="org.apache.commons.lang"/>
       <plugin id="org.apache.commons.logging"/>
       <plugin id="org.apache.felix.scr"/>
@@ -63,8 +62,6 @@
       <plugin id="org.apache.xerces"/>
       <plugin id="org.apache.xml.resolver"/>
       <plugin id="org.apache.xml.serializer"/>
-      <plugin id="org.apache.xmlgraphics"/>
-      <!-- Removed org.assertj (not an OSGi bundle in Orbit) -->
       <plugin id="org.bouncycastle.bcpg"/>
       <plugin id="org.bouncycastle.bcprov"/>
       <plugin id="org.eclipse.compare"/>
@@ -115,8 +112,6 @@
       <plugin id="org.eclipse.ecf.filetransfer"/>
       <plugin id="org.eclipse.ecf.identity"/>
       <plugin id="org.eclipse.ecf.provider.filetransfer"/>
-      <plugin id="org.eclipse.ecf.provider.filetransfer.ssl" fragment="true"/>
-      <plugin id="org.eclipse.ecf.ssl" fragment="true"/>
       <plugin id="org.eclipse.egit"/>
       <plugin id="org.eclipse.egit.core"/>
       <plugin id="org.eclipse.egit.doc"/>
